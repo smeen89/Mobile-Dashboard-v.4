@@ -1,0 +1,457 @@
+type: conditional
+conditions:
+  - entity: input_text.mobilmeny_sebbe
+    state: media
+card:
+  square: false
+  columns: 1
+  type: grid
+  cards:
+    - type: custom:stack-in-card
+      keep:
+        margin: true
+        background: true
+        box_shadow: true
+        border_radius: true
+      cards:
+        - type: custom:button-card
+          entity: sensor.mediastatus
+          show_icon: false
+          show_name: true
+          show_state: false
+          name: Enheter
+          tap_action:
+            action: none
+          hold_action:
+            action: none
+          styles:
+            card:
+              - background-color: transparent
+              - height: 12px
+            name:
+              - font-size: 14px
+              - font-weight: 500
+              - color: rgb(70, 67, 66, 1)
+              - justify-self: left
+              - margin-left: 6px
+          style: |
+            ha-card {
+              box-shadow: none;
+            }
+        - square: false
+          columns: 6
+          type: grid
+          cards:
+            - type: custom:button-card
+              entity: sensor.mediastatus
+              icon: phu:youtube-tv
+              show_state: false
+              show_name: false
+              size: 60%
+              aspect_ratio: 1/1
+              tap_action:
+                action: more-info
+              hold_action:
+                action: call-service
+                service: script.lg_tv_on_off
+              styles:
+                card:
+                  - border-radius: 100%
+                  - background-color: rgb(254, 254, 254, 1)
+                  - border: 1px solid rgb(0, 0, 0, 0.5)
+                  - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                icon:
+                  - color: |
+                      [[[
+                          if ( states["media_player.lg_webos_smart_tv"].state == 'on') return 'rgb(65, 106, 154, 1)';
+                          else return 'rgb(212, 212, 212, 1)';
+                      ]]]
+            - type: custom:button-card
+              entity: input_boolean.dator_av_pa
+              icon: mdi:desktop-tower
+              show_state: false
+              show_name: false
+              size: 60%
+              aspect_ratio: 1/1
+              tap_action:
+                action: more-info
+              hold_action:
+                action: call-service
+                service: script.dator_on_off
+              styles:
+                card:
+                  - border-radius: 100%
+                  - background-color: rgb(254, 254, 254, 1)
+                  - border: 1px solid rgb(0, 0, 0, 0.5)
+                  - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                icon:
+                  - color: |
+                      [[[
+                          if ( states["input_boolean.dator_av_pa"].state == 'on') return 'rgb(65, 106, 154, 1)';
+                          else return 'rgb(212, 212, 212, 1)';
+                      ]]]
+            - type: custom:button-card
+              entity: media_player.tv_kontor
+              icon: phu:youtube-tv
+              show_state: false
+              show_name: false
+              size: 60%
+              aspect_ratio: 1/1
+              tap_action:
+                action: none
+              hold_action:
+                action: call-service
+                service: script.tv_kontor_on_off
+              styles:
+                card:
+                  - border-radius: 100%
+                  - background-color: rgb(254, 254, 254, 1)
+                  - border: 1px solid rgb(0, 0, 0, 0.5)
+                  - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                icon:
+                  - color: |
+                      [[[
+                          if ( states["media_player.tv_kontor"].state == 'on') return 'rgb(65, 106, 154, 1)';
+                          else return 'rgb(212, 212, 212, 1)';
+                      ]]]
+          view_layout:
+            grid:area: middle
+        - square: false
+          columns: 6
+          type: grid
+          cards:
+            - type: custom:button-card
+              entity: input_text.mobilmeny_media_sebbe
+              name: LG Tv
+              tap_action:
+                action: none
+              hold_action:
+                action: none
+              show_state: false
+              show_name: true
+              show_icon: false
+              styles:
+                card:
+                  - background-color: transparent
+                name:
+                  - color: rgb(70, 67, 66, 1)
+                  - font-size: 14px
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+            - type: custom:button-card
+              entity: input_text.mobilmeny_media_sebbe
+              name: Dator
+              tap_action:
+                action: none
+              hold_action:
+                action: none
+              show_state: false
+              show_name: true
+              show_icon: false
+              styles:
+                card:
+                  - background-color: transparent
+                name:
+                  - color: rgb(70, 67, 66, 1)
+                  - font-size: 14px
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+            - type: custom:button-card
+              entity: input_text.mobilmeny_media_sebbe
+              name: Tv kontor
+              tap_action:
+                action: none
+              hold_action:
+                action: none
+              show_state: false
+              show_name: true
+              show_icon: false
+              styles:
+                card:
+                  - background-color: transparent
+                name:
+                  - color: rgb(70, 67, 66, 1)
+                  - font-size: 14px
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+      card_mod:
+        style: |
+          ha-card {
+            background: rgb(255, 254, 253, 1);
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+              }
+    - type: custom:stack-in-card
+      keep:
+        margin: true
+        background: true
+        border_radius: true
+        box_shadow: true
+      cards:
+        - type: custom:button-card
+          entity: sensor.mediastatus
+          show_icon: false
+          show_name: true
+          show_state: false
+          name: Spel
+          tap_action:
+            action: none
+          hold_action:
+            action: none
+          styles:
+            card:
+              - background-color: transparent
+              - height: 12px
+            name:
+              - font-size: 14px
+              - font-weight: 500
+              - color: rgb(70, 67, 66, 1)
+              - justify-self: left
+              - margin-left: 6px
+          style: |
+            ha-card {
+              box-shadow: none;
+            }
+        - square: true
+          columns: 4
+          type: grid
+          cards:
+            - type: picture
+              image: local/spelfodral/wiisports.png
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_starta_wii_sports
+                data: {}
+              hold_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_stoppa_dolphin
+                data: {}
+              card_mod:
+                style: |
+                  ha-card {
+                    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.4);
+                    border-radius: 4px;
+                      }
+            - type: picture
+              image: local/spelfodral/supermariogalaxy.png
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_starta_super_mario_galaxy
+                data: {}
+              hold_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_stoppa_dolphin
+                data: {}
+              card_mod:
+                style: |
+                  ha-card {
+                    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.4);
+                    border-radius: 4px;
+                      }
+            - type: picture
+              image: local/spelfodral/supermariogalaxy2.png
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_starta_super_mario_galaxy_2
+                data: {}
+              hold_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_stoppa_dolphin
+                data: {}
+              card_mod:
+                style: |
+                  ha-card {
+                    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.4);
+                    border-radius: 4px;
+                      }
+            - type: picture
+              image: local/spelfodral/soulcalibur2.png
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_starta_soul_calibur_2
+                data: {}
+              hold_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_stoppa_dolphin
+                data: {}
+              card_mod:
+                style: |
+                  ha-card {
+                    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.4);
+                    border-radius: 4px;
+                      }
+        - square: true
+          columns: 4
+          type: grid
+          cards:
+            - type: picture
+              image: local/spelfodral/smashbrosmelee.png
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_starta_super_smash_bros_melee
+                data: {}
+              hold_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_stoppa_dolphin
+                data: {}
+              card_mod:
+                style: |
+                  ha-card {
+                    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.4);
+                    border-radius: 4px;
+                      }
+            - type: picture
+              image: local/spelfodral/smashbrosbrawl.png
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_starta_super_smash_bros_brawl
+                data: {}
+              hold_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_stoppa_dolphin
+                data: {}
+              card_mod:
+                style: |
+                  ha-card {
+                    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.4);
+                    border-radius: 4px;
+                      }
+            - type: picture
+              image: local/spelfodral/marioparty6.png
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_starta_mario_party_6
+                data: {}
+              hold_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_stoppa_dolphin
+                data: {}
+              card_mod:
+                style: |
+                  ha-card {
+                    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.4);
+                    border-radius: 4px;
+                      }
+            - type: picture
+              image: local/spelfodral/mariokartdd.png
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_starta_mario_kart_dd
+                data: {}
+              hold_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_stoppa_dolphin
+                data: {}
+              card_mod:
+                style: |
+                  ha-card {
+                    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.4);
+                    border-radius: 4px;
+                      }
+        - square: true
+          columns: 4
+          type: grid
+          cards:
+            - type: picture
+              image: local/spelfodral/rocketleague.jpg
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_starta_rocketleague
+                data: {}
+              hold_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_stoppa_rocketleague
+                data: {}
+              card_mod:
+                style: |
+                  ha-card {
+                    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.4);
+                    border-radius: 4px;
+                      }
+            - type: picture
+              image: local/spelfodral/duckgame.png
+              tap_action:
+                action: none
+              double_tap_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_starta_duckgame
+                data: {}
+              hold_action:
+                action: call-service
+                service: button.press
+                target:
+                  entity_id: button.dator_stoppa_duckgame
+                data: {}
+              card_mod:
+                style: |
+                  ha-card {
+                    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.4);
+                    border-radius: 4px;
+                      }
+      card_mod:
+        style: |
+          ha-card {
+            background: rgb(255, 254, 253, 1);
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+              }
