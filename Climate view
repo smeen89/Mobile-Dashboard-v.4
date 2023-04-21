@@ -1,0 +1,1017 @@
+type: conditional
+conditions:
+  - entity: input_text.mobilmeny_sebbe
+    state: klimat
+card:
+  type: vertical-stack
+  cards:
+    - square: false
+      type: grid
+      cards:
+        - type: custom:stack-in-card
+          keep:
+            margin: true
+          cards:
+            - type: vertical-stack
+              cards:
+                - type: custom:button-card
+                  entity: sensor.temperatursensor_toalett_temperature
+                  show_icon: false
+                  show_name: true
+                  show_state: false
+                  name: Toalett
+                  tap_action:
+                    action: none
+                  hold_action:
+                    action: none
+                  styles:
+                    card:
+                      - background-color: transparent
+                      - height: 12px
+                    name:
+                      - font-size: 14px
+                      - font-weight: 500
+                      - color: rgb(70, 67, 66, 1)
+                      - justify-self: left
+                      - margin-left: 6px
+                  style: |
+                    ha-card {
+                      box-shadow: none;
+                    }
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:button-card
+                      entity: sensor.temperatursensor_toalett_temperature
+                      show_icon: true
+                      show_name: false
+                      show_state: false
+                      icon: mdi:thermometer
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      size: 100%
+                      styles:
+                        card:
+                          - width: 20px
+                          - height: 30px
+                          - background-color: transparent
+                          - margin-left: 6px
+                          - margin-top: '-8px'
+                        icon:
+                          - color: |
+                              [[[
+                                if (entity.state < 20) return 'rgb(65, 106, 154, 1)';
+                                if (entity.state < 23) return 'rgb(90, 153 ,92, 1)';
+                                if (entity.state < 25) return 'rgb(255, 158, 67, 1)';
+                                if (entity.state < 40) return 'rgb(187, 29, 29, 1)';
+                              ]]]
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: sensor.temperatursensor_toalett_temperature
+                      show_icon: false
+                      show_name: false
+                      show_state: false
+                      show_label: true
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      label: |
+                        [[[
+                          return states['sensor.temperatursensor_toalett_temperature'].state +' °C ';
+                        ]]]
+                      styles:
+                        card:
+                          - background-color: transparent
+                          - height: 20px
+                        label:
+                          - font-size: 13px
+                          - font-weight: 400
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-bottom: 2px
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: sensor.temperatursensor_toalett_temperature
+                      show_icon: true
+                      show_name: false
+                      show_state: false
+                      icon: mdi:water-percent
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      size: 100%
+                      styles:
+                        card:
+                          - width: 20px
+                          - height: 30px
+                          - background-color: transparent
+                          - margin-left: 6px
+                          - margin-top: '-8px'
+                        icon:
+                          - color: |
+                              [[[
+                                if (states["sensor.temperatursensor_toalett_humidity"].state < 45) return 'rgb(187, 29, 29, 1)';
+                                if (states["sensor.temperatursensor_toalett_humidity"].state < 65) return 'rgb(90, 153 ,92, 1)';
+                                if (states["sensor.temperatursensor_toalett_humidity"].state < 100) return 'rgb(65, 106, 154, 1)';
+                              ]]]
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: sensor.temperatursensor_toalett_temperature
+                      show_icon: false
+                      show_name: false
+                      show_state: false
+                      show_label: true
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      label: |
+                        [[[
+                          return states['sensor.temperatursensor_toalett_humidity'].state +' % ';
+                        ]]]
+                      styles:
+                        card:
+                          - background-color: transparent
+                          - height: 20px
+                        label:
+                          - font-size: 13px
+                          - font-weight: 400
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-bottom: 2px
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+          card_mod:
+            style: |
+              ha-card {
+                background: rgb(255, 254, 253, 1);
+                box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                  }
+        - type: custom:stack-in-card
+          keep:
+            margin: true
+          cards:
+            - type: vertical-stack
+              cards:
+                - type: custom:button-card
+                  entity: sensor.vardagsrum_rorelsesensor_temperature
+                  show_icon: false
+                  show_name: true
+                  show_state: false
+                  name: Vardagsrum
+                  tap_action:
+                    action: none
+                  hold_action:
+                    action: none
+                  styles:
+                    card:
+                      - background-color: transparent
+                      - height: 12px
+                    name:
+                      - font-size: 14px
+                      - font-weight: 500
+                      - color: rgb(70, 67, 66, 1)
+                      - justify-self: left
+                      - margin-left: 6px
+                  style: |
+                    ha-card {
+                      box-shadow: none;
+                    }
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:button-card
+                      entity: sensor.vardagsrum_rorelsesensor_temperature
+                      show_icon: true
+                      show_name: false
+                      show_state: false
+                      icon: mdi:thermometer
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      size: 100%
+                      styles:
+                        card:
+                          - width: 20px
+                          - height: 30px
+                          - background-color: transparent
+                          - margin-left: 6px
+                          - margin-top: '-8px'
+                        icon:
+                          - color: |
+                              [[[
+                                if (entity.state < 20) return 'rgb(65, 106, 154, 1)';
+                                if (entity.state < 23) return 'rgb(90, 153 ,92, 1)';
+                                if (entity.state < 25) return 'rgb(255, 158, 67, 1)';
+                                if (entity.state < 40) return 'rgb(187, 29, 29, 1)';
+                              ]]]
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: sensor.vardagsrum_rorelsesensor_temperature
+                      show_icon: false
+                      show_name: false
+                      show_state: false
+                      show_label: true
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      label: |
+                        [[[
+                          return states['sensor.vardagsrum_rorelsesensor_temperature'].state +' °C ';
+                        ]]]
+                      styles:
+                        card:
+                          - background-color: transparent
+                          - height: 20px
+                        label:
+                          - font-size: 13px
+                          - font-weight: 400
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-bottom: 2px
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+          card_mod:
+            style: |
+              ha-card {
+                background: rgb(255, 254, 253, 1);
+                box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                  }
+        - type: custom:stack-in-card
+          keep:
+            margin: true
+          cards:
+            - type: vertical-stack
+              cards:
+                - type: custom:button-card
+                  entity: sensor.tvattstuga_rorelsesensor_temperature
+                  show_icon: false
+                  show_name: true
+                  show_state: false
+                  name: Tvättstuga
+                  tap_action:
+                    action: none
+                  hold_action:
+                    action: none
+                  styles:
+                    card:
+                      - background-color: transparent
+                      - height: 12px
+                    name:
+                      - font-size: 14px
+                      - font-weight: 500
+                      - color: rgb(70, 67, 66, 1)
+                      - justify-self: left
+                      - margin-left: 6px
+                  style: |
+                    ha-card {
+                      box-shadow: none;
+                    }
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:button-card
+                      entity: sensor.tvattstuga_rorelsesensor_temperature
+                      show_icon: true
+                      show_name: false
+                      show_state: false
+                      icon: mdi:thermometer
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      size: 100%
+                      styles:
+                        card:
+                          - width: 20px
+                          - height: 30px
+                          - background-color: transparent
+                          - margin-left: 6px
+                          - margin-top: '-8px'
+                        icon:
+                          - color: |
+                              [[[
+                                if (entity.state < 20) return 'rgb(65, 106, 154, 1)';
+                                if (entity.state < 23) return 'rgb(90, 153 ,92, 1)';
+                                if (entity.state < 25) return 'rgb(255, 158, 67, 1)';
+                                if (entity.state < 40) return 'rgb(187, 29, 29, 1)';
+                              ]]]
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: sensor.tvattstuga_rorelsesensor_temperature
+                      show_icon: false
+                      show_name: false
+                      show_state: false
+                      show_label: true
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      label: |
+                        [[[
+                          return states['sensor.tvattstuga_rorelsesensor_temperature'].state +' °C ';
+                        ]]]
+                      styles:
+                        card:
+                          - background-color: transparent
+                          - height: 20px
+                        label:
+                          - font-size: 13px
+                          - font-weight: 400
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-bottom: 2px
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+          card_mod:
+            style: |
+              ha-card {
+                background: rgb(255, 254, 253, 1);
+                box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                  }
+        - type: custom:stack-in-card
+          keep:
+            margin: true
+          cards:
+            - type: vertical-stack
+              cards:
+                - type: custom:button-card
+                  entity: sensor.temperatursensor_elise_rum_temperature
+                  show_icon: false
+                  show_name: true
+                  show_state: false
+                  name: Elises Rum
+                  tap_action:
+                    action: none
+                  hold_action:
+                    action: none
+                  styles:
+                    card:
+                      - background-color: transparent
+                      - height: 12px
+                    name:
+                      - font-size: 14px
+                      - font-weight: 500
+                      - color: rgb(70, 67, 66, 1)
+                      - justify-self: left
+                      - margin-left: 6px
+                  style: |
+                    ha-card {
+                      box-shadow: none;
+                    }
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:button-card
+                      entity: sensor.temperatursensor_elise_rum_temperature
+                      show_icon: true
+                      show_name: false
+                      show_state: false
+                      icon: mdi:thermometer
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      size: 100%
+                      styles:
+                        card:
+                          - width: 20px
+                          - height: 30px
+                          - background-color: transparent
+                          - margin-left: 6px
+                          - margin-top: '-8px'
+                        icon:
+                          - color: |
+                              [[[
+                                if (entity.state < 20) return 'rgb(65, 106, 154, 1)';
+                                if (entity.state < 23) return 'rgb(90, 153 ,92, 1)';
+                                if (entity.state < 25) return 'rgb(255, 158, 67, 1)';
+                                if (entity.state < 40) return 'rgb(187, 29, 29, 1)';
+                              ]]]
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: sensor.temperatursensor_elise_rum_temperature
+                      show_icon: false
+                      show_name: false
+                      show_state: false
+                      show_label: true
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      label: |
+                        [[[
+                          return states['sensor.temperatursensor_elise_rum_temperature'].state +' °C ';
+                        ]]]
+                      styles:
+                        card:
+                          - background-color: transparent
+                          - height: 20px
+                        label:
+                          - font-size: 13px
+                          - font-weight: 400
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-bottom: 2px
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: sensor.temperatursensor_elise_rum_temperature
+                      show_icon: true
+                      show_name: false
+                      show_state: false
+                      icon: mdi:water-percent
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      size: 100%
+                      styles:
+                        card:
+                          - width: 20px
+                          - height: 30px
+                          - background-color: transparent
+                          - margin-left: 6px
+                          - margin-top: '-8px'
+                        icon:
+                          - color: |
+                              [[[
+                                if (states["sensor.temperatursensor_elise_rum_humidity"].state < 45) return 'rgb(187, 29, 29, 1)';
+                                if (states["sensor.temperatursensor_elise_rum_humidity"].state < 65) return 'rgb(90, 153 ,92, 1)';
+                                if (states["sensor.temperatursensor_elise_rum_humidity"].state < 100) return 'rgb(65, 106, 154, 1)';
+                              ]]]
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: sensor.temperatursensor_elise_rum_temperature
+                      show_icon: false
+                      show_name: false
+                      show_state: false
+                      show_label: true
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      label: |
+                        [[[
+                          return states['sensor.temperatursensor_elise_rum_humidity'].state +' % ';
+                        ]]]
+                      styles:
+                        card:
+                          - background-color: transparent
+                          - height: 20px
+                        label:
+                          - font-size: 13px
+                          - font-weight: 400
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-bottom: 2px
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+          card_mod:
+            style: |
+              ha-card {
+                background: rgb(255, 254, 253, 1);
+                box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                  }
+        - type: custom:stack-in-card
+          keep:
+            margin: true
+          cards:
+            - type: vertical-stack
+              cards:
+                - type: custom:button-card
+                  entity: sensor.temperatursensor_kontor_temperature
+                  show_icon: false
+                  show_name: true
+                  show_state: false
+                  name: Kontor
+                  tap_action:
+                    action: none
+                  hold_action:
+                    action: none
+                  styles:
+                    card:
+                      - background-color: transparent
+                      - height: 12px
+                    name:
+                      - font-size: 14px
+                      - font-weight: 500
+                      - color: rgb(70, 67, 66, 1)
+                      - justify-self: left
+                      - margin-left: 6px
+                  style: |
+                    ha-card {
+                      box-shadow: none;
+                    }
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:button-card
+                      entity: sensor.temperatursensor_kontor_temperature
+                      show_icon: true
+                      show_name: false
+                      show_state: false
+                      icon: mdi:thermometer
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      size: 100%
+                      styles:
+                        card:
+                          - width: 20px
+                          - height: 30px
+                          - background-color: transparent
+                          - margin-left: 6px
+                          - margin-top: '-8px'
+                        icon:
+                          - color: |
+                              [[[
+                                if (entity.state < 20) return 'rgb(65, 106, 154, 1)';
+                                if (entity.state < 23) return 'rgb(90, 153 ,92, 1)';
+                                if (entity.state < 25) return 'rgb(255, 158, 67, 1)';
+                                if (entity.state < 40) return 'rgb(187, 29, 29, 1)';
+                              ]]]
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: sensor.temperatursensor_kontor_temperature
+                      show_icon: false
+                      show_name: false
+                      show_state: false
+                      show_label: true
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      label: |
+                        [[[
+                          return states['sensor.temperatursensor_kontor_temperature'].state +' °C ';
+                        ]]]
+                      styles:
+                        card:
+                          - background-color: transparent
+                          - height: 20px
+                        label:
+                          - font-size: 13px
+                          - font-weight: 400
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-bottom: 2px
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: sensor.temperatursensor_kontor_temperature
+                      show_icon: true
+                      show_name: false
+                      show_state: false
+                      icon: mdi:water-percent
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      size: 100%
+                      styles:
+                        card:
+                          - width: 20px
+                          - height: 30px
+                          - background-color: transparent
+                          - margin-left: 6px
+                          - margin-top: '-8px'
+                        icon:
+                          - color: |
+                              [[[
+                                if (states["sensor.temperatursensor_kontor_humidity"].state < 45) return 'rgb(187, 29, 29, 1)';
+                                if (states["sensor.temperatursensor_kontor_humidity"].state < 65) return 'rgb(90, 153 ,92, 1)';
+                                if (states["sensor.temperatursensor_kontor_humidity"].state < 100) return 'rgb(65, 106, 154, 1)';
+                              ]]]
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: sensor.temperatursensor_kontor_temperature
+                      show_icon: false
+                      show_name: false
+                      show_state: false
+                      show_label: true
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      label: |
+                        [[[
+                          return states['sensor.temperatursensor_kontor_humidity'].state +' % ';
+                        ]]]
+                      styles:
+                        card:
+                          - background-color: transparent
+                          - height: 20px
+                        label:
+                          - font-size: 13px
+                          - font-weight: 400
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-bottom: 2px
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+          card_mod:
+            style: |
+              ha-card {
+                background: rgb(255, 254, 253, 1);
+                box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                  }
+        - type: custom:stack-in-card
+          keep:
+            margin: true
+          cards:
+            - type: vertical-stack
+              cards:
+                - type: custom:button-card
+                  entity: sensor.temperatursensor_sovrum_temperature
+                  show_icon: false
+                  show_name: true
+                  show_state: false
+                  name: Sovrum
+                  tap_action:
+                    action: none
+                  hold_action:
+                    action: none
+                  styles:
+                    card:
+                      - background-color: transparent
+                      - height: 12px
+                    name:
+                      - font-size: 14px
+                      - font-weight: 500
+                      - color: rgb(70, 67, 66, 1)
+                      - justify-self: left
+                      - margin-left: 6px
+                  style: |
+                    ha-card {
+                      box-shadow: none;
+                    }
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:button-card
+                      entity: sensor.temperatursensor_sovrum_temperature
+                      show_icon: true
+                      show_name: false
+                      show_state: false
+                      icon: mdi:thermometer
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      size: 100%
+                      styles:
+                        card:
+                          - width: 20px
+                          - height: 30px
+                          - background-color: transparent
+                          - margin-left: 6px
+                          - margin-top: '-8px'
+                        icon:
+                          - color: |
+                              [[[
+                                if (entity.state < 20) return 'rgb(65, 106, 154, 1)';
+                                if (entity.state < 23) return 'rgb(90, 153 ,92, 1)';
+                                if (entity.state < 25) return 'rgb(255, 158, 67, 1)';
+                                if (entity.state < 40) return 'rgb(187, 29, 29, 1)';
+                              ]]]
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: sensor.temperatursensor_sovrum_temperature
+                      show_icon: false
+                      show_name: false
+                      show_state: false
+                      show_label: true
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      label: |
+                        [[[
+                          return states['sensor.temperatursensor_sovrum_temperature'].state +' °C ';
+                        ]]]
+                      styles:
+                        card:
+                          - background-color: transparent
+                          - height: 20px
+                        label:
+                          - font-size: 13px
+                          - font-weight: 400
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-bottom: 2px
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: sensor.temperatursensor_sovrum_temperature
+                      show_icon: true
+                      show_name: false
+                      show_state: false
+                      icon: mdi:water-percent
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      size: 100%
+                      styles:
+                        card:
+                          - width: 20px
+                          - height: 30px
+                          - background-color: transparent
+                          - margin-left: 6px
+                          - margin-top: '-8px'
+                        icon:
+                          - color: |
+                              [[[
+                                if (states["sensor.temperatursensor_sovrum_humidity"].state < 45) return 'rgb(187, 29, 29, 1)';
+                                if (states["sensor.temperatursensor_sovrum_humidity"].state < 65) return 'rgb(90, 153 ,92, 1)';
+                                if (states["sensor.temperatursensor_sovrum_humidity"].state < 100) return 'rgb(65, 106, 154, 1)';
+                              ]]]
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: sensor.temperatursensor_sovrum_temperature
+                      show_icon: false
+                      show_name: false
+                      show_state: false
+                      show_label: true
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      label: |
+                        [[[
+                          return states['sensor.temperatursensor_sovrum_humidity'].state +' % ';
+                        ]]]
+                      styles:
+                        card:
+                          - background-color: transparent
+                          - height: 20px
+                        label:
+                          - font-size: 13px
+                          - font-weight: 400
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-bottom: 2px
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+          card_mod:
+            style: |
+              ha-card {
+                background: rgb(255, 254, 253, 1);
+                box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                  }
+      columns: 2
+    - type: custom:stack-in-card
+      keep:
+        border_radius: true
+        box_shadow: true
+        margin: true
+      cards:
+        - type: vertical-stack
+          cards:
+            - type: custom:button-card
+              entity: sensor.temperatursensor_toalett_temperature
+              show_icon: false
+              show_name: true
+              show_state: false
+              name: Luftfuktare sovrum
+              tap_action:
+                action: none
+              hold_action:
+                action: none
+              styles:
+                card:
+                  - background-color: transparent
+                  - height: 12px
+                  - margin-bottom: '-10px'
+                name:
+                  - font-size: 14px
+                  - font-weight: 500
+                  - color: rgb(70, 67, 66, 1)
+                  - justify-self: left
+                  - margin-left: 6px
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+            - square: false
+              type: grid
+              cards:
+                - type: custom:layout-card
+                  layout_type: custom:grid-layout
+                  layout_options:
+                    grid-template-columns: 33.33% 66.66%
+                    grid-template-rows: auto
+                    grid-template-areas: |
+                      "1 2"
+                  cards:
+                    - type: custom:button-card
+                      entity: humidifier.deerma_jsq5_8d58_humidifier
+                      show_state: false
+                      show_name: false
+                      size: 60%
+                      tap_action:
+                        action: toggle
+                      hold_action:
+                        action: none
+                      icon: mdi:power
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
+                      styles:
+                        card:
+                          - width: 56px
+                          - height: 56px
+                          - border-radius: 100%
+                          - background-color: rgb(254, 254, 254, 1)
+                          - border: 1px solid rgb(0, 0, 0, 0.5)
+                          - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                        icon:
+                          - color: |
+                              [[[
+                                  if ( states["humidifier.deerma_jsq5_8d58_humidifier"].state == 'on') return 'rgb(90, 153 ,92, 1)';
+                                  else return 'rgb(187, 29, 29, 1)';
+                              ]]]
+                    - type: vertical-stack
+                      cards:
+                        - type: custom:button-card
+                          entity: humidifier.deerma_jsq5_8d58_humidifier
+                          show_icon: false
+                          show_name: false
+                          show_state: false
+                          show_label: true
+                          label: |
+                            [[[
+                                if ( states['humidifier.deerma_jsq5_8d58_humidifier'].state == 'on') return 'Luftfuktaren är på.';
+                                else return 'Luftfuktaren är av.';
+                                
+                            ]]]
+                          name: Luftfuktare
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+                          styles:
+                            card:
+                              - background-color: transparent
+                              - height: 40px
+                              - margin-top: 6px
+                            name:
+                              - font-size: 14px
+                              - font-weight: 500
+                              - color: rgb(70, 67, 66, 1)
+                              - justify-self: left
+                              - margin-left: 6px
+                            label:
+                              - font-size: 13px
+                              - font-weight: 400
+                              - color: rgb(70, 67, 66, 1)
+                              - justify-self: left
+                              - margin-left: 6px
+                              - margin-top: 6px
+                          style: |
+                            ha-card {
+                              box-shadow: none;
+                            }
+                - type: custom:layout-card
+                  layout_type: custom:grid-layout
+                  layout_options:
+                    grid-template-columns: 33.33% 66.66%
+                    grid-template-rows: auto
+                    grid-template-areas: |
+                      "1 2"
+                  cards:
+                    - type: custom:button-card
+                      entity: automation.mi_smart_humidifier
+                      show_state: false
+                      show_name: false
+                      size: 60%
+                      tap_action:
+                        action: call-service
+                        service: script.toggle_mi_smart_humidifier_automation
+                        data: {}
+                        target: {}
+                      hold_action:
+                        action: none
+                      icon: mdi:water-percent
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
+                      styles:
+                        card:
+                          - width: 56px
+                          - height: 56px
+                          - border-radius: 100%
+                          - background-color: rgb(254, 254, 254, 1)
+                          - border: 1px solid rgb(0, 0, 0, 0.5)
+                          - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                        icon:
+                          - color: |
+                              [[[
+                                  if ( states["automation.mi_smart_humidifier"].state == 'on') return 'rgb(90, 153 ,92, 1)';
+                                  else return 'rgb(187, 29, 29, 1)';
+                              ]]]
+                    - type: vertical-stack
+                      cards:
+                        - type: custom:button-card
+                          entity: automation.mi_smart_humidifier
+                          show_icon: false
+                          show_name: false
+                          show_state: false
+                          show_label: true
+                          label: |
+                            [[[
+                                if ( states['automation.mi_smart_humidifier'].state == 'on') return 'Automationen är på';
+                                else return 'Automationen är av.';
+                                
+                            ]]]
+                          name: Luftfuktare
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+                          styles:
+                            card:
+                              - background-color: transparent
+                              - height: 40px
+                              - margin-top: 6px
+                            name:
+                              - font-size: 14px
+                              - font-weight: 500
+                              - color: rgb(70, 67, 66, 1)
+                              - justify-self: left
+                              - margin-left: 6px
+                            label:
+                              - font-size: 13px
+                              - font-weight: 400
+                              - color: rgb(70, 67, 66, 1)
+                              - justify-self: left
+                              - margin-left: 6px
+                              - margin-top: 6px
+                          style: |
+                            ha-card {
+                              box-shadow: none;
+                            }
+              columns: 2
+      card_mod:
+        style: |
+          ha-card {
+            background: rgb(255, 254, 253, 1);
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+              }
