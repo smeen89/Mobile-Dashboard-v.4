@@ -1,0 +1,547 @@
+type: custom:stack-in-card
+keep:
+  margin: true
+  background: true
+  border_radius: true
+  box_shadow: true
+  outer_padding: true
+cards:
+  - type: custom:layout-card
+    layout_type: custom:grid-layout
+    layout_options:
+      grid-template-columns: 60% 40%
+      grid-template-rows: auto
+      grid-template-areas: |
+        "1 2"
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            entity: sensor.time
+            show_state: true
+            show_icon: false
+            show_name: false
+            styles:
+              state:
+                - font-size: 50px
+                - font-weight: 400
+                - justify-self: left
+                - color: rgb(70, 67, 66, 1)
+              card:
+                - background-color: transparent
+                - width: 115px
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            style: |
+              ha-card {
+                box-shadow: none;
+              }
+          - type: vertical-stack
+            cards:
+              - type: custom:button-card
+                entity: sensor.veckodagstorbokstav
+                show_state: true
+                show_icon: false
+                show_name: false
+                show_label: true
+                label: |
+                  [[[
+                    return states['sensor.dagsnummer'].state + ' ' + states['sensor.manad'].state;
+                  ]]]
+                styles:
+                  state:
+                    - font-size: 18px
+                    - font-weight: 400
+                    - justify-self: left
+                    - color: rgb(70, 67, 66, 1)
+                  label:
+                    - font-size: 18px
+                    - font-weight: 500
+                    - justify-self: left
+                    - color: rgb(70, 67, 66, 1)
+                  card:
+                    - background-color: transparent
+                    - height: 50px
+                    - margin-top: 5px
+                    - margin-left: 0px
+                    - width: 100px
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                style: |
+                  ha-card {
+                    box-shadow: none;
+                  }     
+      - square: false
+        type: grid
+        cards:
+          - type: custom:layout-card
+            layout_type: custom:grid-layout
+            layout_options:
+              grid-template-columns: 30% 70%
+              grid-template-rows: auto
+              grid-template-areas: |
+                "1 2"
+            cards:
+              - type: custom:mushroom-chips-card
+                chips:
+                  - type: weather
+                    entity: weather.smhi_home
+                    double_tap_action:
+                      action: none
+                    show_conditions: false
+                    show_temperature: false
+                    tap_action:
+                      action: more-info
+                    hold_action:
+                      action: none
+                card_mod:
+                  style: |
+                    ha-card {
+                      --chip-box-shadow: none;
+                      --chip-background: none;
+                      margin-top: 4px;
+              - type: custom:button-card
+                entity: weather.smhi_home
+                show_state: false
+                show_name: false
+                show_icon: false
+                show_label: true
+                label: |
+                  [[[
+                    return states['weather.smhi_home'].attributes.temperature + ' °C / ' + Math.round(states['sensor.prognostemperatur'].state) + ' °C';
+                  ]]]
+                tap_action:
+                  action: more-info
+                hold_action:
+                  action: none
+                styles:
+                  card:
+                    - height: 30px
+                    - width: 120px
+                    - background-color: transparent
+                    - margin-left: 30px
+                    - margin-top: 6px
+                  label:
+                    - font-size: 15px
+                    - font-weight: 500px
+                    - color: rgb(70, 67, 66, 1)
+                    - justify-self: left
+                style: |
+                  ha-card {
+                    box-shadow: none;
+                  }
+        columns: 2
+    columns: 2
+  - type: vertical-stack
+    cards:
+      - square: false
+        columns: 6
+        type: grid
+        cards:
+          - type: custom:button-card
+            entity: input_text.mobilmeny_sebbe
+            icon: mdi:home
+            show_state: false
+            show_name: false
+            size: 50%
+            aspect_ratio: 1/1
+            tap_action:
+              action: call-service
+              service: input_text.set_value
+              service_data:
+                value: överblick
+                entity_id: input_text.mobilmeny_sebbe
+            styles:
+              card:
+                - border-radius: 100%
+                - background-color: rgb(254, 254, 254, 1)
+                - border: 1px solid rgb(0, 0, 0, 0.5)
+                - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+              icon:
+                - color: rgb(90, 153 ,92, 1)
+            state:
+              - value: överblick
+                styles:
+                  card:
+                    - background-color: rgb(254, 254, 254, 1)
+                    - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
+                  icon:
+                    - color: rgb(90, 153 ,92, 1)
+                    - animation: bounce 1s linear
+            extra_styles: |
+              @keyframes bounce {
+                  50% { transform:translateY(0%); }
+                  60% { transform:translateY(-15%); }
+                  70% { transform:translateY(0%); }
+                  85% { transform:translateY(-7%); }
+                  87% { transform:translateY(0%); }
+                  89% { transform:translateY(-3%); }
+                  100% { transform:translateY(0); }
+              }
+          - type: custom:button-card
+            entity: input_text.mobilmeny_sebbe
+            icon: hue:bulb-group-sultan-lightstrip
+            show_state: false
+            show_name: false
+            size: 50%
+            aspect_ratio: 1/1
+            tap_action:
+              action: call-service
+              service: input_text.set_value
+              service_data:
+                value: belysning
+                entity_id: input_text.mobilmeny_sebbe
+            styles:
+              card:
+                - border-radius: 100%
+                - background-color: rgb(254, 254, 254, 1)
+                - border: 1px solid rgb(0, 0, 0, 0.5)
+                - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+              icon:
+                - color: rgb(255, 202, 55, 1)
+            state:
+              - value: belysning
+                styles:
+                  card:
+                    - background-color: rgb(254, 254, 254, 1)
+                    - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
+                  icon:
+                    - color: rgb(255, 202, 55, 1)
+                    - animation:
+                        - gelatine 2s linear
+            extra_styles: |
+              @keyframes gelatine {
+                from, to { transform: scale(1.0); }
+                25% { transform: scale(0.9, 1.1); }
+                50% { transform: scale(1.2, 0.9); }
+                75% { transform: scale(0.95, 1.05); }
+              }
+          - type: custom:button-card
+            entity: input_text.mobilmeny_sebbe
+            icon: phu:youtube-tv
+            show_state: false
+            show_name: false
+            size: 60%
+            aspect_ratio: 1/1
+            tap_action:
+              action: call-service
+              service: input_text.set_value
+              service_data:
+                value: media
+                entity_id: input_text.mobilmeny_sebbe
+            styles:
+              card:
+                - border-radius: 100%
+                - background-color: rgb(254, 254, 254, 1)
+                - border: 1px solid rgb(0, 0, 0, 0.5)
+                - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+              icon:
+                - color: rgb(65, 106, 154, 1)
+            state:
+              - value: media
+                styles:
+                  card:
+                    - background-color: rgb(254, 254, 254, 1)
+                    - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
+                  icon:
+                    - color: rgb(65, 106, 154, 1)
+                    - animation: grow 2s ease
+            extra_styles: |
+              @keyframes grow {
+                from { transform: scale(0); }
+                to { transform: scale(1); }
+              }
+          - type: custom:button-card
+            entity: input_text.mobilmeny_sebbe
+            icon: mdi:shield-home
+            show_state: false
+            show_name: false
+            size: 50%
+            aspect_ratio: 1/1
+            tap_action:
+              action: call-service
+              service: input_text.set_value
+              service_data:
+                value: säkerhet
+                entity_id: input_text.mobilmeny_sebbe
+            styles:
+              card:
+                - border-radius: 100%
+                - background-color: rgb(254, 254, 254, 1)
+                - border: 1px solid rgb(0, 0, 0, 0.5)
+                - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+              icon:
+                - color: rgb(187, 29, 29, 1)
+            state:
+              - value: säkerhet
+                styles:
+                  card:
+                    - background-color: rgb(254, 254, 254, 1)
+                    - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
+                  icon:
+                    - color: rgb(187, 29, 29, 1)
+                    - animation: tilt-shaking 0.2s linear 5
+            extra_styles: |
+              @keyframes tilt-shaking {
+                0% { transform: rotate(0deg); }
+                25% { transform: rotate(15deg); }
+                50% { transform: rotate(0eg); }
+                75% { transform: rotate(-15deg); }
+                100% { transform: rotate(0deg); }
+              }
+          - type: custom:button-card
+            entity: input_text.mobilmeny_sebbe
+            icon: mdi:home-thermometer
+            show_state: false
+            show_name: false
+            size: 50%
+            aspect_ratio: 1/1
+            tap_action:
+              action: call-service
+              service: input_text.set_value
+              service_data:
+                value: klimat
+                entity_id: input_text.mobilmeny_sebbe
+            styles:
+              card:
+                - border-radius: 100%
+                - background-color: rgb(254, 254, 254, 1)
+                - border: 1px solid rgb(0, 0, 0, 0.5)
+                - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+              icon:
+                - color: rgb(255, 158, 67, 1)
+            state:
+              - value: klimat
+                styles:
+                  card:
+                    - background-color: rgb(254, 254, 254, 1)
+                    - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
+                  icon:
+                    - color: rgb(255, 176, 102, 1)
+                    - animation: bounce-in-right 1.5s ease
+            extra_styles: |
+              @keyframes bounce-in-right {
+                0% {
+                  opacity: 0;
+                  transform: translateY(500px);
+                }
+                60% {
+                  opacity: 1;
+                  transform: translateY(-15px);
+                }
+                80% { transform: translateY(10px); }
+                100% { transform: translateY(0); }
+              }
+          - type: custom:button-card
+            entity: input_text.mobilmeny_sebbe
+            icon: mdi:cog
+            show_state: false
+            show_name: false
+            size: 50%
+            aspect_ratio: 1/1
+            tap_action:
+              action: call-service
+              service: input_text.set_value
+              service_data:
+                value: system
+                entity_id: input_text.mobilmeny_sebbe
+            styles:
+              card:
+                - border-radius: 100%
+                - background-color: rgb(254, 254, 254, 1)
+                - border: 1px solid rgb(0, 0, 0, 0.5)
+                - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+              icon:
+                - color: rgb(176, 87, 129, 1)
+            state:
+              - value: system
+                styles:
+                  card:
+                    - background-color: rgb(254, 254, 254, 1)
+                    - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
+                  icon:
+                    - color: rgb(176, 87, 129, 1)
+                    - animation:
+                        - rotating 2s ease
+      - square: false
+        columns: 6
+        type: grid
+        cards:
+          - type: custom:button-card
+            entity: input_text.mobilmeny_sebbe
+            name: Översikt
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            show_state: false
+            show_name: true
+            show_icon: false
+            styles:
+              card:
+                - background-color: transparent
+              name:
+                - color: rgb(70, 67, 66, 1)
+                - font-size: 14px
+            state:
+              - value: överblick
+                styles:
+                  card:
+                    - background-color: transparent
+                  name:
+                    - color: rgb(70, 67, 66, 1)
+                    - font-weight: 500
+            style: |
+              ha-card {
+                box-shadow: none;
+              }
+          - type: custom:button-card
+            entity: input_text.mobilmeny_sebbe
+            name: Belysning
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            show_state: false
+            show_name: true
+            show_icon: false
+            styles:
+              card:
+                - background-color: transparent
+              name:
+                - color: rgb(70, 67, 66, 1)
+                - font-size: 14px
+            state:
+              - value: belysning
+                styles:
+                  card:
+                    - background-color: transparent
+                  name:
+                    - color: rgb(70, 67, 66, 1)
+                    - font-weight: 500
+            style: |
+              ha-card {
+                box-shadow: none;
+              }
+          - type: custom:button-card
+            entity: input_text.mobilmeny_sebbe
+            name: Media
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            show_state: false
+            show_name: true
+            show_icon: false
+            styles:
+              card:
+                - background-color: transparent
+              name:
+                - color: rgb(70, 67, 66, 1)
+                - font-size: 14px
+            state:
+              - value: media
+                styles:
+                  card:
+                    - background-color: transparent
+                  name:
+                    - color: rgb(70, 67, 66, 1)
+                    - font-weight: 500
+            style: |
+              ha-card {
+                box-shadow: none;
+              }
+          - type: custom:button-card
+            entity: input_text.mobilmeny_sebbe
+            name: Säkerhet
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            show_state: false
+            show_name: true
+            show_icon: false
+            styles:
+              card:
+                - background-color: transparent
+              name:
+                - color: rgb(70, 67, 66, 1)
+                - font-size: 14px
+            state:
+              - value: säkerhet
+                styles:
+                  card:
+                    - background-color: transparent
+                  name:
+                    - color: rgb(70, 67, 66, 1)
+                    - font-weight: 500
+            style: |
+              ha-card {
+                box-shadow: none;
+              }
+          - type: custom:button-card
+            entity: input_text.mobilmeny_sebbe
+            name: Klimat
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            show_state: false
+            show_name: true
+            show_icon: false
+            styles:
+              card:
+                - background-color: transparent
+              name:
+                - color: rgb(70, 67, 66, 1)
+                - font-size: 14px
+            state:
+              - value: klimat
+                styles:
+                  card:
+                    - background-color: transparent
+                  name:
+                    - color: rgb(70, 67, 66, 1)
+                    - font-weight: 500
+            style: |
+              ha-card {
+                box-shadow: none;
+              }
+          - type: custom:button-card
+            entity: input_text.mobilmeny_sebbe
+            name: System
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            show_state: false
+            show_name: true
+            show_icon: false
+            styles:
+              card:
+                - background-color: transparent
+              name:
+                - color: rgb(70, 67, 66, 1)
+                - font-size: 14px
+            state:
+              - value: system
+                styles:
+                  card:
+                    - background-color: transparent
+                  name:
+                    - color: rgb(70, 67, 66, 1)
+                    - font-weight: 500
+            style: |
+              ha-card {
+                box-shadow: none;
+              }
+card_mod:
+  style: |
+    ha-card {
+      background: rgb(255, 254, 253, 1);
+      box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+        }
