@@ -1,0 +1,2729 @@
+type: conditional
+conditions:
+  - entity: input_text.mobilmeny_sebbe
+    state: belysning
+card:
+  type: vertical-stack
+  cards:
+    - type: custom:stack-in-card
+      keep:
+        margin: true
+        background: true
+        border_radius: true
+        box_shadow: true
+      cards:
+        - type: custom:button-card
+          entity: light.alla_lampor
+          show_icon: false
+          show_name: true
+          show_state: false
+          name: Rum
+          tap_action:
+            action: none
+          hold_action:
+            action: none
+          styles:
+            card:
+              - background-color: transparent
+              - height: 12px
+            name:
+              - font-size: 14px
+              - font-weight: 500
+              - color: rgb(70, 67, 66, 1)
+              - justify-self: left
+              - margin-left: 6px
+          style: |
+            ha-card {
+              box-shadow: none;
+            }
+        - square: false
+          columns: 4
+          type: grid
+          cards:
+            - type: vertical-stack
+              cards:
+                - type: custom:button-card
+                  entity: input_text.mobilmeny_belysning_sebbe
+                  show_name: true
+                  show_icon: false
+                  show_state: false
+                  aspect_ratio: 3/1
+                  name: Entre
+                  tap_action:
+                    action: call-service
+                    service: input_text.set_value
+                    service_data:
+                      value: entre
+                      entity_id: input_text.mobilmeny_belysning_sebbe
+                  hold_action:
+                    action: call-service
+                    service: script.toggle_entre_100
+                    data: {}
+                    target: {}
+                  styles:
+                    name:
+                      - color: rgb(70, 67, 66, 1)
+                      - font-size: 14px
+                    card:
+                      - background-color: |
+                          [[[ 
+                            if ( states["light.entre"].state == 'on') return 'rgb(255, 202, 55, 1)'; 
+                            else return 'rgb(254, 254, 254, 1)';
+                          ]]]
+                      - border: 1px solid rgb(0, 0, 0, 0.5)
+                      - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                  state:
+                    - value: entre
+                      styles:
+                        name:
+                          - font-weight: 600
+                          - color: rgb(70, 67, 66, 1)
+                        card:
+                          - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
+            - type: custom:button-card
+              entity: input_text.mobilmeny_belysning_sebbe
+              show_name: true
+              show_icon: false
+              show_state: false
+              aspect_ratio: 3/1
+              name: Vardagsrum
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  value: vardagsrum
+                  entity_id: input_text.mobilmeny_belysning_sebbe
+              hold_action:
+                action: call-service
+                service: script.toggle_vardagsrum_utan_matbord_100
+                data: {}
+                target: {}
+              styles:
+                name:
+                  - color: rgb(70, 67, 66, 1)
+                  - font-size: 14px
+                card:
+                  - background-color: |
+                      [[[ 
+                        if ( states["light.vardagsrum"].state == 'on') return 'rgb(255, 202, 55, 1)'; 
+                        else return 'rgb(254, 254, 254, 1)';
+                      ]]]
+                  - border: 1px solid rgb(0, 0, 0, 0.5)
+                  - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+              state:
+                - value: vardagsrum
+                  styles:
+                    name:
+                      - font-weight: 500
+                      - color: rgb(70, 67, 66, 1)
+                    card:
+                      - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
+            - type: custom:button-card
+              entity: input_text.mobilmeny_belysning_sebbe
+              show_name: true
+              show_icon: false
+              show_state: false
+              aspect_ratio: 3/1
+              name: Kök
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  value: kok
+                  entity_id: input_text.mobilmeny_belysning_sebbe
+              hold_action:
+                action: call-service
+                service: script.toggle_kok_100
+                data: {}
+                target: {}
+              styles:
+                name:
+                  - color: rgb(70, 67, 66, 1)
+                  - font-size: 14px
+                card:
+                  - background-color: |
+                      [[[ 
+                        if ( states["light.kok"].state == 'on') return 'rgb(255, 202, 55, 1)'; 
+                        else return 'rgb(254, 254, 254, 1)';
+                      ]]]
+                  - border: 1px solid rgb(0, 0, 0, 0.5)
+                  - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+              state:
+                - value: kok
+                  styles:
+                    name:
+                      - font-weight: 500
+                      - color: rgb(70, 67, 66, 1)
+                    card:
+                      - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
+            - type: custom:button-card
+              entity: input_text.mobilmeny_belysning_sebbe
+              show_name: true
+              show_icon: false
+              show_state: false
+              aspect_ratio: 3/1
+              name: Tvättstuga
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  value: tvattstuga
+                  entity_id: input_text.mobilmeny_belysning_sebbe
+              hold_action:
+                action: call-service
+                service: script.toggle_tvattstuga
+                data: {}
+                target: {}
+              styles:
+                name:
+                  - color: rgb(70, 67, 66, 1)
+                  - font-size: 14px
+                card:
+                  - background-color: |
+                      [[[ 
+                        if ( states["light.tvattstuga"].state == 'on') return 'rgb(255, 202, 55, 1)'; 
+                        else return 'rgb(254, 254, 254, 1)';
+                      ]]]
+                  - border: 1px solid rgb(0, 0, 0, 0.5)
+                  - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+              state:
+                - value: tvattstuga
+                  styles:
+                    name:
+                      - font-weight: 500
+                      - color: rgb(70, 67, 66, 1)
+                    card:
+                      - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
+            - type: vertical-stack
+              cards:
+                - type: custom:button-card
+                  entity: input_text.mobilmeny_belysning_sebbe
+                  show_name: true
+                  show_icon: false
+                  show_state: false
+                  aspect_ratio: 3/1
+                  name: Hall
+                  tap_action:
+                    action: call-service
+                    service: input_text.set_value
+                    service_data:
+                      value: hall
+                      entity_id: input_text.mobilmeny_belysning_sebbe
+                  hold_action:
+                    action: call-service
+                    service: script.toggle_hall
+                    data: {}
+                    target: {}
+                  styles:
+                    name:
+                      - color: rgb(70, 67, 66, 1)
+                      - font-size: 14px
+                    card:
+                      - background-color: |
+                          [[[ 
+                            if ( states["light.hall_uppe"].state == 'on') return 'rgb(255, 202, 55, 1)'; 
+                            else return 'rgb(254, 254, 254, 1)';
+                          ]]]
+                      - border: 1px solid rgb(0, 0, 0, 0.5)
+                      - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                  state:
+                    - value: hall
+                      styles:
+                        name:
+                          - font-weight: 600
+                          - color: rgb(70, 67, 66, 1)
+                        card:
+                          - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
+            - type: custom:button-card
+              entity: input_text.mobilmeny_belysning_sebbe
+              show_name: true
+              show_icon: false
+              show_state: false
+              aspect_ratio: 3/1
+              name: Elises Rum
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  value: elises_rum
+                  entity_id: input_text.mobilmeny_belysning_sebbe
+              hold_action:
+                action: call-service
+                service: script.toggle_elises_rum_100
+                data: {}
+                target: {}
+              styles:
+                name:
+                  - color: rgb(70, 67, 66, 1)
+                  - font-size: 14px
+                card:
+                  - background-color: |
+                      [[[ 
+                        if ( states["light.elises_rum"].state == 'on') return 'rgb(255, 202, 55, 1)'; 
+                        else return 'rgb(254, 254, 254, 1)';
+                      ]]]
+                  - border: 1px solid rgb(0, 0, 0, 0.5)
+                  - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+              state:
+                - value: elises_rum
+                  styles:
+                    name:
+                      - font-weight: 500
+                      - color: rgb(70, 67, 66, 1)
+                    card:
+                      - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
+            - type: custom:button-card
+              entity: input_text.mobilmeny_belysning_sebbe
+              show_name: true
+              show_icon: false
+              show_state: false
+              aspect_ratio: 3/1
+              name: Kontor
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  value: kontor
+                  entity_id: input_text.mobilmeny_belysning_sebbe
+              hold_action:
+                action: call-service
+                service: script.toggle_kontor_100
+                data: {}
+                target: {}
+              styles:
+                name:
+                  - color: rgb(70, 67, 66, 1)
+                  - font-size: 14px
+                card:
+                  - background-color: |
+                      [[[ 
+                        if ( states["light.kontor"].state == 'on') return 'rgb(255, 202, 55, 1)'; 
+                        else return 'rgb(254, 254, 254, 1)';
+                      ]]]
+                  - border: 1px solid rgb(0, 0, 0, 0.5)
+                  - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+              state:
+                - value: kontor
+                  styles:
+                    name:
+                      - font-weight: 500
+                      - color: rgb(70, 67, 66, 1)
+                    card:
+                      - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
+            - type: custom:button-card
+              entity: input_text.mobilmeny_belysning_sebbe
+              show_name: true
+              show_icon: false
+              show_state: false
+              aspect_ratio: 3/1
+              name: Sovrum
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  value: sovrum
+                  entity_id: input_text.mobilmeny_belysning_sebbe
+              hold_action:
+                action: call-service
+                service: script.toggle_sovrum_100
+                data: {}
+                target: {}
+              styles:
+                name:
+                  - color: rgb(70, 67, 66, 1)
+                  - font-size: 14px
+                card:
+                  - background-color: |
+                      [[[ 
+                        if ( states["light.sovrum"].state == 'on') return 'rgb(255, 202, 55, 1)'; 
+                        else return 'rgb(254, 254, 254, 1)';
+                      ]]]
+                  - border: 1px solid rgb(0, 0, 0, 0.5)
+                  - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+              state:
+                - value: sovrum
+                  styles:
+                    name:
+                      - font-weight: 500
+                      - color: rgb(70, 67, 66, 1)
+                    card:
+                      - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
+      card_mod:
+        style: |
+          ha-card {
+            background: rgb(255, 254, 253, 1);
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+              }
+    - type: conditional
+      conditions:
+        - entity: input_text.mobilmeny_belysning_sebbe
+          state: entre
+        - entity: input_text.mobilmeny_sebbe
+          state: belysning
+      card:
+        type: custom:stack-in-card
+        keep:
+          margin: true
+          background: true
+          border_radius: true
+          box_shadow: true
+        cards:
+          - type: custom:button-card
+            entity: light.alla_lampor
+            show_icon: false
+            show_name: true
+            show_state: false
+            name: Entre
+            hold_action:
+              action: none
+            tap_action:
+              action: none
+            styles:
+              card:
+                - background-color: transparent
+                - height: 12px
+              name:
+                - font-size: 14px
+                - font-weight: 500
+                - color: rgb(70, 67, 66, 1)
+                - justify-self: left
+                - margin-left: 6px
+            style: |
+              ha-card {
+                box-shadow: none;
+              }
+          - square: true
+            columns: 6
+            type: grid
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.entre
+                    show_state: false
+                    show_name: false
+                    name: Entre
+                    size: 70%
+                    aspect_ratio: 1/1
+                    hold_action:
+                      action: more-info
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.entre
+                    name: Entre
+                    hold_action:
+                      action: none
+                    tap_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.entre_taklampa_1
+                    icon: hue:ceiling-fugato-three
+                    show_state: false
+                    show_name: false
+                    size: 70%
+                    aspect_ratio: 1/1
+                    hold_action:
+                      action: more-info
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.entre_taklampa_1
+                    name: Taklampa 1
+                    hold_action:
+                      action: none
+                    tap_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.entre_klotlampa
+                    icon: hue:flourish-alt
+                    name: Klotlampa
+                    show_state: false
+                    show_name: false
+                    size: 70%
+                    aspect_ratio: 1/1
+                    hold_action:
+                      action: more-info
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.entre_klotlampa
+                    name: Klotlampa
+                    hold_action:
+                      action: none
+                    tap_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.entre_taklampa_2
+                    icon: hue:ceiling-fugato-three
+                    name: Taklampa 2
+                    show_state: false
+                    show_name: false
+                    size: 70%
+                    aspect_ratio: 1/1
+                    hold_action:
+                      action: more-info
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.entre_taklampa_2
+                    name: Taklampa 2
+                    hold_action:
+                      action: none
+                    tap_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.entre_under_trappen
+                    name: Under Trappen
+                    show_state: false
+                    show_name: false
+                    size: 70%
+                    aspect_ratio: 1/1
+                    hold_action:
+                      action: more-info
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.entre_under_trappen
+                    name: Trappen
+                    hold_action:
+                      action: none
+                    tap_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+        card_mod:
+          style: |
+            ha-card {
+              background: rgb(255, 254, 253, 1);
+              box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                }
+    - type: conditional
+      conditions:
+        - entity: input_text.mobilmeny_belysning_sebbe
+          state: vardagsrum
+        - entity: input_text.mobilmeny_sebbe
+          state: belysning
+      card:
+        type: custom:stack-in-card
+        keep:
+          margin: true
+          background: true
+          border_radius: true
+          box_shadow: true
+        cards:
+          - type: custom:button-card
+            entity: light.alla_lampor
+            show_icon: false
+            show_name: true
+            show_state: false
+            name: Vardagsrum
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            styles:
+              card:
+                - background-color: transparent
+                - height: 12px
+              name:
+                - font-size: 14px
+                - font-weight: 500
+                - color: rgb(70, 67, 66, 1)
+                - justify-self: left
+                - margin-left: 6px
+            style: |
+              ha-card {
+                box-shadow: none;
+              }
+          - square: true
+            columns: 6
+            type: grid
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.vardagsrum_utan_matbord
+                    show_state: false
+                    show_name: false
+                    name: Vardagsrum
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.entre
+                    name: Vardagsrum
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 11px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.vardagsrum_matbord
+                    show_state: false
+                    show_name: false
+                    name: Vardagsrum
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.vardagsrum_matbord
+                    name: Matbord
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.vardagsrum_canneloni_macaroni
+                    icon: hue:single-spot
+                    show_state: false
+                    show_name: false
+                    name: Canneloni Macaroni
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.vardagsrum_canneloni_macaroni
+                    name: Canneloni
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.vardagsrum_vitrinskap
+                    icon: hue:lightstrip
+                    show_state: false
+                    show_name: false
+                    name: Vitrinskåp
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: none
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.vardagsrum_vitrinskap
+                    name: Vitrinskåp
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.vardagsrum_rislampa
+                    icon: hue:floor-shade
+                    show_state: false
+                    show_name: false
+                    name: Rislampa
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.vardagsrum_rislampa
+                    name: Rislampa
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.vardagsrum_tv_bank
+                    icon: hue:lightstrip
+                    show_state: false
+                    show_name: false
+                    name: Tv Bänk
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: none
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.vardagsrum_tv_bank
+                    name: Tv Bänk
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.vardagsrum_fonsterlampa
+                    show_state: false
+                    show_name: false
+                    name: Fönsterlampa
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.vardagsrum_fonsterlampa
+                    name: Fönster
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.vardagsrum_vagglampa
+                    show_state: false
+                    show_name: false
+                    icon: hue:wall-spot
+                    name: Vägglampa
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.vardagsrum_vagglampa
+                    name: Vägglampa
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.vardagsrum_empire
+                    show_state: false
+                    show_name: false
+                    icon: hue:single-spot
+                    name: Empire
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.vardagsrum_empire
+                    name: Empire
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card: null
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+        card_mod:
+          style: |
+            ha-card {
+              background: rgb(255, 254, 253, 1);
+              box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                }
+    - type: conditional
+      conditions:
+        - entity: input_text.mobilmeny_belysning_sebbe
+          state: kok
+        - entity: input_text.mobilmeny_sebbe
+          state: belysning
+      card:
+        type: custom:stack-in-card
+        keep:
+          margin: true
+          background: true
+          border_radius: true
+          box_shadow: true
+        cards:
+          - type: custom:button-card
+            entity: light.alla_lampor
+            show_icon: false
+            show_name: true
+            show_state: false
+            name: Kök
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            styles:
+              card:
+                - background-color: transparent
+                - height: 12px
+              name:
+                - font-size: 14px
+                - font-weight: 500
+                - color: rgb(70, 67, 66, 1)
+                - justify-self: left
+                - margin-left: 6px
+            style: |
+              ha-card {
+                box-shadow: none;
+              }
+          - square: true
+            columns: 6
+            type: grid
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.kok
+                    show_state: false
+                    show_name: false
+                    name: Kök
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.kok
+                    name: Kök
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.kok_matbord
+                    show_state: false
+                    show_name: false
+                    name: Matbord
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.vardagsrum_matbord
+                    name: Matbord
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.kok_taklampa
+                    icon: hue:ceiling-buratto-three
+                    show_state: false
+                    show_name: false
+                    name: Taklampa
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.kok_taklampa
+                    name: Taklampa
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+        card_mod:
+          style: |
+            ha-card {
+              background: rgb(255, 254, 253, 1);
+              box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                }
+    - type: conditional
+      conditions:
+        - entity: input_text.mobilmeny_belysning_sebbe
+          state: tvattstuga
+        - entity: input_text.mobilmeny_sebbe
+          state: belysning
+      card:
+        type: custom:stack-in-card
+        keep:
+          margin: true
+          background: true
+          border_radius: true
+          box_shadow: true
+        cards:
+          - type: custom:button-card
+            entity: light.alla_lampor
+            show_icon: false
+            show_name: true
+            show_state: false
+            name: Tvättstuga
+            tap_action:
+              action: toggle
+            hold_action:
+              action: none
+            styles:
+              card:
+                - background-color: transparent
+                - height: 12px
+              name:
+                - font-size: 14px
+                - font-weight: 500
+                - color: rgb(70, 67, 66, 1)
+                - justify-self: left
+                - margin-left: 6px
+            style: |
+              ha-card {
+                box-shadow: none;
+              }
+          - square: true
+            columns: 6
+            type: grid
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.tvattstuga
+                    icon: hue:flourish-alt
+                    name: Fönster
+                    show_state: false
+                    show_name: false
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: none
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.tvattstuga
+                    name: Fönster
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+        card_mod:
+          style: |
+            ha-card {
+              background: rgb(255, 254, 253, 1);
+              box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                }
+    - type: conditional
+      conditions:
+        - entity: input_text.mobilmeny_belysning_sebbe
+          state: hall
+        - entity: input_text.mobilmeny_sebbe
+          state: belysning
+      card:
+        type: custom:stack-in-card
+        keep:
+          margin: true
+          background: true
+          border_radius: true
+          box_shadow: true
+        cards:
+          - type: custom:button-card
+            entity: light.alla_lampor
+            show_icon: false
+            show_name: true
+            show_state: false
+            name: Hall
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            styles:
+              card:
+                - background-color: transparent
+                - height: 12px
+              name:
+                - font-size: 14px
+                - font-weight: 500
+                - color: rgb(70, 67, 66, 1)
+                - justify-self: left
+                - margin-left: 6px
+            style: |
+              ha-card {
+                box-shadow: none;
+              }
+          - square: true
+            columns: 6
+            type: grid
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.hall_uppe_taklampa
+                    icon: hue:ceiling-fugato-three
+                    name: Taklampa
+                    show_state: false
+                    show_name: false
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.hall_uppe_taklampa
+                    name: Taklampa
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+        card_mod:
+          style: |
+            ha-card {
+              background: rgb(255, 254, 253, 1);
+              box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                }
+    - type: conditional
+      conditions:
+        - entity: input_text.mobilmeny_belysning_sebbe
+          state: elises_rum
+        - entity: input_text.mobilmeny_sebbe
+          state: belysning
+      card:
+        type: custom:stack-in-card
+        keep:
+          margin: true
+          background: true
+          border_radius: true
+          box_shadow: true
+        cards:
+          - type: custom:button-card
+            entity: light.alla_lampor
+            show_icon: false
+            show_name: true
+            show_state: false
+            name: Elises Rum
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            styles:
+              card:
+                - background-color: transparent
+                - height: 12px
+              name:
+                - font-size: 14px
+                - font-weight: 500
+                - color: rgb(70, 67, 66, 1)
+                - justify-self: left
+                - margin-left: 6px
+            style: |
+              ha-card {
+                box-shadow: none;
+              }
+          - square: true
+            columns: 6
+            type: grid
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.elises_rum
+                    show_state: false
+                    show_name: false
+                    name: Elises Rum
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.elises_rum
+                    name: Elises Rum
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.elises_rum_klotlampa
+                    icon: hue:flourish-alt
+                    name: Klotlampa
+                    show_state: false
+                    show_name: false
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.elises_rum_klotlampa
+                    name: Klotlampa
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.elises_rum_ljusslinga
+                    show_state: false
+                    show_name: false
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: none
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.elises_rum_ljusslinga
+                    name: Ljusslinga
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.elises_rum_taklampa
+                    name: Taklampa
+                    show_state: false
+                    show_name: false
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.elises_rum_taklampa
+                    name: Taklampa
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+        card_mod:
+          style: |
+            ha-card {
+              background: rgb(255, 254, 253, 1);
+              box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                }
+    - type: conditional
+      conditions:
+        - entity: input_text.mobilmeny_belysning_sebbe
+          state: kontor
+        - entity: input_text.mobilmeny_sebbe
+          state: belysning
+      card:
+        type: custom:stack-in-card
+        keep:
+          margin: true
+          background: true
+          border_radius: true
+          box_shadow: true
+        cards:
+          - type: custom:button-card
+            entity: light.alla_lampor
+            show_icon: false
+            show_name: true
+            show_state: false
+            name: Kontor
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            styles:
+              card:
+                - background-color: transparent
+                - height: 12px
+              name:
+                - font-size: 14px
+                - font-weight: 500
+                - color: rgb(70, 67, 66, 1)
+                - justify-self: left
+                - margin-left: 6px
+            style: |
+              ha-card {
+                box-shadow: none;
+              }
+          - square: true
+            columns: 6
+            type: grid
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.kontor
+                    show_state: false
+                    show_name: false
+                    name: Kontor
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.kontor
+                    name: Kontor
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.kontor_taklampa
+                    icon: hue:ceiling-fugato-four
+                    show_state: false
+                    show_name: false
+                    name: Taklampa
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.kontor_taklampa
+                    name: Taklampa
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    aspect_ratio: 4/1
+                    styles:
+                      card:
+                        - background-color: transparent
+                        - margin-bottom: 40px
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.skrivbord
+                    icon: hue:lightstrip
+                    show_state: false
+                    show_name: false
+                    name: Skrivbord
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.skrivbord
+                    name: Skrivbord
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    aspect_ratio: 4/1
+                    styles:
+                      card:
+                        - background-color: transparent
+                        - margin-bottom: 40px
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.soffa
+                    icon: hue:lightstrip
+                    show_state: false
+                    show_name: false
+                    name: Soffa
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.soffa
+                    name: Soffa
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    aspect_ratio: 4/1
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.ledlist_tv_kontor
+                    icon: hue:lightstrip
+                    show_state: false
+                    show_name: false
+                    name: Tv
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.ledlist_tv_kontor
+                    name: Tv
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.kontor_fonsterlampa
+                    icon: hue:flourish-alt
+                    show_state: false
+                    show_name: false
+                    name: Fönster
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.kontor_fonsterlampa
+                    name: Fönster
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.kontor_play_1
+                    show_state: false
+                    show_name: false
+                    icon: hue:play-bar
+                    name: Play 1
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.kontor_play_1
+                    name: Play 1
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.kontor_play_2
+                    show_state: false
+                    show_name: false
+                    icon: hue:play-bar
+                    name: Play 2
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.kontor_play_2
+                    name: Play 2
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.kontor_play_3
+                    show_state: false
+                    show_name: false
+                    icon: hue:play-bar
+                    name: Play 3
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.kontor_play_3
+                    name: Play 3
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.golvlampa_kontor
+                    show_state: false
+                    show_name: false
+                    icon: hue:floor-shade
+                    name: Golvlampa
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.golvlampa_kontor
+                    name: Golvlampa
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+        card_mod:
+          style: |
+            ha-card {
+              background: rgb(255, 254, 253, 1);
+              box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                }
+    - type: conditional
+      conditions:
+        - entity: input_text.mobilmeny_belysning_sebbe
+          state: sovrum
+        - entity: input_text.mobilmeny_sebbe
+          state: belysning
+      card:
+        type: custom:stack-in-card
+        keep:
+          margin: true
+          background: true
+          border_radius: true
+          box_shadow: true
+        cards:
+          - type: custom:button-card
+            entity: light.alla_lampor
+            show_icon: false
+            show_name: true
+            show_state: false
+            name: Sovrum
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+            styles:
+              card:
+                - background-color: transparent
+                - height: 12px
+              name:
+                - font-size: 14px
+                - font-weight: 500
+                - color: rgb(70, 67, 66, 1)
+                - justify-self: left
+                - margin-left: 6px
+            style: |
+              ha-card {
+                box-shadow: none;
+              }
+          - square: true
+            columns: 6
+            type: grid
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.sovrum
+                    show_state: false
+                    show_name: false
+                    name: Sovrum
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.sovrum
+                    name: Sovrum
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.sovrum_taklampa
+                    show_state: false
+                    show_name: false
+                    name: Taklampa
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.sovrum_taklampa
+                    name: Taklampa
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.sovrum_golvlampa
+                    show_state: false
+                    show_name: false
+                    name: Golvlampa
+                    icon: hue:floor-shade
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.sovrum_golvlampa
+                    name: Golvlampa
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.sovrum_fonster
+                    icon: hue:lightstrip
+                    show_state: false
+                    show_name: false
+                    name: Fönster
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: none
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.sovrum_fonster
+                    name: Fönster
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.sovrum_saras_sanglampa
+                    icon: hue:wall-spot
+                    show_state: false
+                    show_name: false
+                    name: Saras Sänglampa
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.sovrum_saras_sanglampa
+                    name: Saras
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.sovrum_sebbes_sanglampa
+                    icon: hue:wall-spot
+                    show_state: false
+                    show_name: false
+                    name: Sebbes Sänglampa
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.sovrum_sebbes_sanglampa
+                    name: Sebbes
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    entity: light.sovrum_rislampa
+                    icon: hue:floor-shade
+                    show_state: false
+                    show_name: false
+                    name: Rislampa
+                    size: 70%
+                    aspect_ratio: 1/1
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    styles:
+                      card:
+                        - border-radius: 100%
+                        - background-color: rgb(254, 254, 254, 1)
+                        - border: 1px solid rgb(0, 0, 0, 0.5)
+                        - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      icon:
+                        - color: rgb(212, 212, 212, 1)
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: rgb(254, 254, 254, 1)
+                            - box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.35)
+                          icon:
+                            - color: rgb(255, 202, 55, 1)
+                  - type: custom:button-card
+                    entity: light.sovrum_rislampa
+                    name: Rislampa
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    show_state: false
+                    show_name: true
+                    show_icon: false
+                    styles:
+                      card:
+                        - background-color: transparent
+                      name:
+                        - color: rgb(70, 67, 66, 1)
+                        - font-size: 12px
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+        card_mod:
+          style: |
+            ha-card {
+              background: rgb(255, 254, 253, 1);
+              box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                }
