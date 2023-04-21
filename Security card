@@ -1,0 +1,647 @@
+type: conditional
+conditions:
+  - entity: input_text.mobilmeny_sebbe
+    state: säkerhet
+card:
+  type: vertical-stack
+  cards:
+    - square: false
+      type: grid
+      cards:
+        - type: custom:stack-in-card
+          keep:
+            border_radius: true
+            box_shadow: true
+            margin: true
+            outer_padding: false
+          cards:
+            - type: custom:layout-card
+              layout_type: custom:grid-layout
+              layout_options:
+                grid-template-columns: 33.33% 66.66%
+                grid-template-rows: auto
+                grid-template-areas: |
+                  "1 2"
+              cards:
+                - type: custom:button-card
+                  entity: lock.huvudentre
+                  show_state: false
+                  show_name: false
+                  size: 50%
+                  tap_action:
+                    action: none
+                  hold_action:
+                    action: toggle
+                  icon: |
+                    [[[
+                        if ( states["binary_sensor.dorrsensor_entre_contact"].state == 'on') return 'mdi:door-open';
+                        if ( states["sensor.huvudentre_las"].state == 'olåst') return 'mdi:lock-open';
+                        else return 'mdi:lock';
+                    ]]]
+                  styles:
+                    card:
+                      - width: 56px
+                      - height: 56px
+                      - border-radius: 100%
+                      - background-color: rgb(254, 254, 254, 1)
+                      - border: 1px solid rgb(0, 0, 0, 0.5)
+                      - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                    icon:
+                      - color: |
+                          [[[
+                              if ( states["binary_sensor.dorrsensor_entre_contact"].state == 'on') return 'rgb(90, 153 ,92, 1)';
+                              if ( states["sensor.huvudentre_las"].state == 'olåst') return 'rgb(90, 153 ,92, 1)';
+                              else return 'rgb(187, 29, 29, 1)';
+                          ]]]
+                - type: vertical-stack
+                  cards:
+                    - type: custom:button-card
+                      entity: lock.huvudentre
+                      show_icon: false
+                      show_name: true
+                      show_state: false
+                      show_label: true
+                      label: |
+                        [[[
+                            if ( states['binary_sensor.dorrsensor_entre_contact'].state == 'on') return 'Dörren är öppen.';
+                            else if ( states['sensor.huvudentre_las'].state == 'låst') return 'Dörren är låst.';
+                            else if ( states['sensor.huvudentre_las'].state == 'olåst') return 'Dörren är olåst.';
+                            
+                        ]]]
+                      name: Huvudentre
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      styles:
+                        card:
+                          - background-color: transparent
+                          - height: 40px
+                          - margin-top: 6px
+                        name:
+                          - font-size: 14px
+                          - font-weight: 500
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-left: 6px
+                        label:
+                          - font-size: 13px
+                          - font-weight: 400
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-left: 6px
+                          - margin-top: 6px
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+          card_mod:
+            style: |
+              ha-card {
+                background: rgb(255, 254, 253, 1);
+                box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                  }
+        - type: custom:stack-in-card
+          keep:
+            border_radius: true
+            box_shadow: true
+            margin: true
+            outer_padding: false
+          cards:
+            - type: custom:layout-card
+              layout_type: custom:grid-layout
+              layout_options:
+                grid-template-columns: 33.33% 66.66%
+                grid-template-rows: auto
+                grid-template-areas: |
+                  "1 2"
+              cards:
+                - type: custom:button-card
+                  entity: input_boolean.larm
+                  show_icon: true
+                  show_name: false
+                  show_state: false
+                  size: 50%
+                  tap_action:
+                    action: none
+                  hold_action:
+                    action: toggle
+                  styles:
+                    card:
+                      - border-radius: 100%
+                      - background-color: rgb(254, 254, 254, 1)
+                      - border: 1px solid rgb(0, 0, 0, 0.5)
+                      - box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15)
+                      - width: 56px
+                      - height: 56px
+                  state:
+                    - value: 'on'
+                      icon: mdi:shield
+                      styles:
+                        icon:
+                          - color: rgb(187, 29, 29, 1)
+                        card:
+                          - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
+                    - value: 'off'
+                      icon: mdi:shield-off
+                      styles:
+                        icon:
+                          - color: rgb(90, 153 ,92, 1)
+                - type: vertical-stack
+                  cards:
+                    - type: custom:button-card
+                      entity: input_boolean.larm
+                      show_icon: false
+                      show_name: true
+                      show_state: false
+                      show_label: true
+                      label: |
+                        [[[
+                            if ( states['input_boolean.larm'].state == 'on') return 'Huset är larmat.';
+                            else if ( states['input_boolean.larm'].state == 'off') return 'Larmet är av.';
+                            
+                        ]]]
+                      name: Hemlarm
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      styles:
+                        card:
+                          - background-color: transparent
+                          - height: 40px
+                          - margin-top: 6px
+                        name:
+                          - font-size: 14px
+                          - font-weight: 500
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-left: 6px
+                        label:
+                          - font-size: 13px
+                          - font-weight: 400
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-left: 6px
+                          - margin-top: 6px
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+          card_mod:
+            style: |
+              ha-card {
+                background: rgb(255, 254, 253, 1);
+                box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                  }
+      columns: 2
+    - square: false
+      type: grid
+      cards:
+        - type: custom:stack-in-card
+          keep:
+            margin: true
+          cards:
+            - type: vertical-stack
+              cards:
+                - type: custom:button-card
+                  entity: binary_sensor.vardagsrum_dorrsensor_dubbeldorr_contact
+                  show_icon: false
+                  show_name: true
+                  show_state: false
+                  name: Vardagsrum
+                  tap_action:
+                    action: none
+                  hold_action:
+                    action: none
+                  styles:
+                    card:
+                      - background-color: transparent
+                      - height: 12px
+                    name:
+                      - font-size: 14px
+                      - font-weight: 500
+                      - color: rgb(70, 67, 66, 1)
+                      - justify-self: left
+                      - margin-left: 6px
+                  style: |
+                    ha-card {
+                      box-shadow: none;
+                    }
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:button-card
+                      entity: binary_sensor.vardagsrum_dorrsensor_dubbeldorr_contact
+                      show_icon: true
+                      show_name: false
+                      show_state: false
+                      icon: |
+                        [[[
+                            if ( states["binary_sensor.vardagsrum_dorrsensor_dubbeldorr_contact"].state == 'on') return 'mdi:door-open';
+                            else return 'mdi:lock';
+                        ]]]
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      size: 100%
+                      styles:
+                        card:
+                          - width: 20px
+                          - height: 30px
+                          - background-color: transparent
+                          - margin-left: 6px
+                          - margin-top: '-8px'
+                        icon:
+                          - color: |
+                              [[[
+                                  if ( states["binary_sensor.vardagsrum_dorrsensor_dubbeldorr_contact"].state == 'on') return 'rgb(90, 153 ,92, 1)';
+                                  else return 'rgb(187, 29, 29, 1)';
+                              ]]]
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: binary_sensor.vardagsrum_dorrsensor_dubbeldorr_contact
+                      show_icon: false
+                      show_name: false
+                      show_state: false
+                      show_label: true
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      label: |
+                        [[[
+                            if ( states["binary_sensor.vardagsrum_dorrsensor_dubbeldorr_contact"].state == 'on') return 'Dubbeldörrarna är öppna.';
+                            else return 'Dubbeldörrarna är stängda.';
+                        ]]]
+                      styles:
+                        card:
+                          - background-color: transparent
+                          - height: 20px
+                        label:
+                          - font-size: 13px
+                          - font-weight: 400
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-bottom: 2px
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+          card_mod:
+            style: |
+              ha-card {
+                background: rgb(255, 254, 253, 1);
+                box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                  }
+        - type: custom:stack-in-card
+          keep:
+            margin: true
+          cards:
+            - type: vertical-stack
+              cards:
+                - type: custom:button-card
+                  entity: binary_sensor.vardagsrum_dorrsensor_altan_contact
+                  show_icon: false
+                  show_name: true
+                  show_state: false
+                  name: Vardagsrum
+                  tap_action:
+                    action: none
+                  hold_action:
+                    action: none
+                  styles:
+                    card:
+                      - background-color: transparent
+                      - height: 12px
+                    name:
+                      - font-size: 14px
+                      - font-weight: 500
+                      - color: rgb(70, 67, 66, 1)
+                      - justify-self: left
+                      - margin-left: 6px
+                  style: |
+                    ha-card {
+                      box-shadow: none;
+                    }
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:button-card
+                      entity: binary_sensor.vardagsrum_dorrsensor_altan_contact
+                      show_icon: true
+                      show_name: false
+                      show_state: false
+                      icon: |
+                        [[[
+                            if ( states["binary_sensor.vardagsrum_dorrsensor_altan_contact"].state == 'on') return 'mdi:door-open';
+                            else return 'mdi:lock';
+                        ]]]
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      size: 100%
+                      styles:
+                        card:
+                          - width: 20px
+                          - height: 30px
+                          - background-color: transparent
+                          - margin-left: 6px
+                          - margin-top: '-8px'
+                        icon:
+                          - color: |
+                              [[[
+                                  if ( states["binary_sensor.vardagsrum_dorrsensor_altan_contact"].state == 'on') return 'rgb(90, 153 ,92, 1)';
+                                  else return 'rgb(187, 29, 29, 1)';
+                              ]]]
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: binary_sensor.vardagsrum_dorrsensor_altan_contact
+                      show_icon: false
+                      show_name: false
+                      show_state: false
+                      show_label: true
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      label: |
+                        [[[
+                            if ( states["binary_sensor.vardagsrum_dorrsensor_altan_contact"].state == 'on') return 'Altandörren är öppen.';
+                            else return 'Altandörren är stängd.';
+                        ]]]
+                      styles:
+                        card:
+                          - background-color: transparent
+                          - height: 20px
+                        label:
+                          - font-size: 13px
+                          - font-weight: 400
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-bottom: 2px
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+          card_mod:
+            style: |
+              ha-card {
+                background: rgb(255, 254, 253, 1);
+                box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                  }
+        - type: custom:stack-in-card
+          keep:
+            margin: true
+          cards:
+            - type: vertical-stack
+              cards:
+                - type: custom:button-card
+                  entity: binary_sensor.kok_dorrsensor_altan_contact
+                  show_icon: false
+                  show_name: true
+                  show_state: false
+                  name: Kök
+                  tap_action:
+                    action: none
+                  hold_action:
+                    action: none
+                  styles:
+                    card:
+                      - background-color: transparent
+                      - height: 12px
+                    name:
+                      - font-size: 14px
+                      - font-weight: 500
+                      - color: rgb(70, 67, 66, 1)
+                      - justify-self: left
+                      - margin-left: 6px
+                  style: |
+                    ha-card {
+                      box-shadow: none;
+                    }
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:button-card
+                      entity: binary_sensor.kok_dorrsensor_altan_contact
+                      show_icon: true
+                      show_name: false
+                      show_state: false
+                      icon: |
+                        [[[
+                            if ( states["binary_sensor.kok_dorrsensor_altan_contact"].state == 'on') return 'mdi:door-open';
+                            else return 'mdi:lock';
+                        ]]]
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      size: 100%
+                      styles:
+                        card:
+                          - width: 20px
+                          - height: 30px
+                          - background-color: transparent
+                          - margin-left: 6px
+                          - margin-top: '-8px'
+                        icon:
+                          - color: |
+                              [[[
+                                  if ( states["binary_sensor.kok_dorrsensor_altan_contact"].state == 'on') return 'rgb(90, 153 ,92, 1)';
+                                  else return 'rgb(187, 29, 29, 1)';
+                              ]]]
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: binary_sensor.kok_dorrsensor_altan_contact
+                      show_icon: false
+                      show_name: false
+                      show_state: false
+                      show_label: true
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      label: |
+                        [[[
+                            if ( states["binary_sensor.kok_dorrsensor_altan_contact"].state == 'on') return 'Altandörren är öppen.';
+                            else return 'Altandörren är stängd.';
+                        ]]]
+                      styles:
+                        card:
+                          - background-color: transparent
+                          - height: 20px
+                        label:
+                          - font-size: 13px
+                          - font-weight: 400
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-bottom: 2px
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+          card_mod:
+            style: |
+              ha-card {
+                background: rgb(255, 254, 253, 1);
+                box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                  }
+        - type: custom:stack-in-card
+          keep:
+            margin: true
+          cards:
+            - type: vertical-stack
+              cards:
+                - type: custom:button-card
+                  entity: binary_sensor.tvattstuga_dorrsensor_contact
+                  show_icon: false
+                  show_name: true
+                  show_state: false
+                  name: Tvättstuga
+                  tap_action:
+                    action: none
+                  hold_action:
+                    action: none
+                  styles:
+                    card:
+                      - background-color: transparent
+                      - height: 12px
+                    name:
+                      - font-size: 14px
+                      - font-weight: 500
+                      - color: rgb(70, 67, 66, 1)
+                      - justify-self: left
+                      - margin-left: 6px
+                  style: |
+                    ha-card {
+                      box-shadow: none;
+                    }
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:button-card
+                      entity: binary_sensor.tvattstuga_dorrsensor_contact
+                      show_icon: true
+                      show_name: false
+                      show_state: false
+                      icon: |
+                        [[[
+                            if ( states["binary_sensor.tvattstuga_dorrsensor_contact"].state == 'on') return 'mdi:door-open';
+                            else return 'mdi:lock';
+                        ]]]
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      size: 100%
+                      styles:
+                        card:
+                          - width: 20px
+                          - height: 30px
+                          - background-color: transparent
+                          - margin-left: 6px
+                          - margin-top: '-8px'
+                        icon:
+                          - color: |
+                              [[[
+                                  if ( states["binary_sensor.tvattstuga_dorrsensor_contact"].state == 'on') return 'rgb(90, 153 ,92, 1)';
+                                  else return 'rgb(187, 29, 29, 1)';
+                              ]]]
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+                    - type: custom:button-card
+                      entity: binary_sensor.tvattstuga_dorrsensor_contact
+                      show_icon: false
+                      show_name: false
+                      show_state: false
+                      show_label: true
+                      tap_action:
+                        action: none
+                      hold_action:
+                        action: none
+                      label: |
+                        [[[
+                            if ( states["binary_sensor.tvattstuga_dorrsensor_contact"].state == 'on') return 'Dörren är öppen.';
+                            else return 'Dörren är stängd.';
+                        ]]]
+                      styles:
+                        card:
+                          - background-color: transparent
+                          - height: 20px
+                        label:
+                          - font-size: 13px
+                          - font-weight: 400
+                          - color: rgb(70, 67, 66, 1)
+                          - justify-self: left
+                          - margin-bottom: 2px
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                        }
+          card_mod:
+            style: |
+              ha-card {
+                background: rgb(255, 254, 253, 1);
+                box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+                  }
+      columns: 2
+    - type: custom:stack-in-card
+      keep:
+        background: true
+        box_shadow: false
+        margin: true
+        border_radius: true
+        outer_padding: true
+      cards:
+        - show_state: false
+          show_name: false
+          camera_view: live
+          type: picture-entity
+          entity: camera.framsida_camera
+          image: https://demo.home-assistant.io/stub_config/bedroom.png
+          camera_image: camera.framsida_camera
+          tap_action:
+            action: none
+          hold_action:
+            action: none
+      card_mod:
+        style: |
+          ha-card {
+            background: rgb(255, 254, 253, 1);
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+              }
+    - type: custom:stack-in-card
+      keep:
+        background: true
+        box_shadow: false
+        margin: true
+        border_radius: true
+        outer_padding: true
+      cards:
+        - show_state: false
+          show_name: false
+          camera_view: live
+          type: picture-entity
+          entity: camera.altan_camera
+          image: https://demo.home-assistant.io/stub_config/bedroom.png
+          camera_image: camera.altan_camera
+          tap_action:
+            action: none
+          hold_action:
+            action: none
+      card_mod:
+        style: |
+          ha-card {
+            background: rgb(255, 254, 253, 1);
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+              }
