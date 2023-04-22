@@ -1,0 +1,944 @@
+type: custom:popup-card
+entity: sensor.mediastatus
+dismissable: true
+card:
+  type: custom:stack-in-card
+  keep:
+    background: false
+    box_shadow: false
+    margin: true
+    border_radius: true
+    outer_padding: true
+  cards:
+    - type: vertical-stack
+      cards:
+        - square: true
+          columns: 7
+          type: grid
+          cards:
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              tap_action:
+                action: none
+              entity: script.lg_tv_on_off
+              aspect_ratio: 1/1
+              hold_action:
+                action: none
+              size: 40px
+              styles:
+                icon:
+                  - color: white
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+            - show_name: false
+              show_icon: true
+              type: custom:button-card
+              tap_action:
+                action: none
+              entity: script.lg_tv_on_off
+              aspect_ratio: 1/1
+              hold_action:
+                action: call-service
+                service: script.lg_tv_on_off
+                data: {}
+                target: {}
+              size: 40px
+              styles:
+                icon:
+                  - color: white
+                card:
+                  - border-radius: 100%
+                  - background-color: transparent
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              tap_action:
+                action: none
+              entity: script.lg_tv_on_off
+              aspect_ratio: 1/1
+              hold_action:
+                action: none
+              size: 40px
+              styles:
+                icon:
+                  - color: null
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              tap_action:
+                action: none
+              entity: script.lg_tv_on_off
+              aspect_ratio: 1/1
+              hold_action:
+                action: none
+              size: 40px
+              styles:
+                icon:
+                  - color: null
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              tap_action:
+                action: none
+              entity: script.lg_tv_on_off
+              aspect_ratio: 1/1
+              hold_action:
+                action: none
+              size: 40px
+              styles:
+                icon:
+                  - color: null
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+            - type: custom:button-card
+              entity: input_boolean.tv_kontroller
+              hold_action:
+                - action: none
+              size: 40px
+              name: |
+                [[[
+                  if (states['input_boolean.tv_kontroller'].state === "on")
+                    return "ATV";
+                  else if (states['input_boolean.tv_kontroller'].state === "off")
+                    return "LG TV";
+                ]]]
+              icon: |
+                [[[
+                  if (states['input_boolean.tv_kontroller'].state === "on")
+                    return 'mdi:toggle-switch';
+                  else if (states['input_boolean.tv_kontroller'].state === "off")
+                          return 'mdi:toggle-switch-off';
+                ]]]
+              state:
+                - value: 'off'
+                  styles:
+                    icon:
+                      - color: white
+                - value: 'on'
+                  styles:
+                    icon:
+                      - color: white
+              styles:
+                name:
+                  - font-size: 13px
+                  - font-weight: bold
+                  - color: white
+                  - padding-top: 0px
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              tap_action:
+                action: none
+              entity: script.lg_tv_on_off
+              aspect_ratio: 1/1
+              hold_action:
+                action: none
+              size: 40px
+              styles:
+                icon:
+                  - color: null
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+        - square: true
+          columns: 5
+          type: grid
+          cards:
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              tap_action:
+                action: none
+              entity: script.lg_tv_on_off
+              aspect_ratio: 1/1
+              hold_action:
+                action: none
+              size: 40px
+              styles:
+                icon:
+                  - color: null
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              tap_action:
+                action: none
+              entity: script.lg_tv_on_off
+              aspect_ratio: 1/1
+              hold_action:
+                action: none
+              size: 40px
+              styles:
+                icon:
+                  - color: null
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+            - show_name: false
+              show_icon: true
+              type: custom:button-card
+              tap_action:
+                action: toggle
+              entity: script.mediacenter_upp
+              size: 80px
+              aspect_ratio: 1/1
+              styles:
+                icon:
+                  - color: white
+                card:
+                  - background-color: transparent
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              tap_action:
+                action: none
+              entity: script.lg_tv_on_off
+              aspect_ratio: 1/1
+              hold_action:
+                action: none
+              size: 40px
+              styles:
+                icon:
+                  - color: null
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              tap_action:
+                action: none
+              entity: script.lg_tv_on_off
+              aspect_ratio: 1/1
+              hold_action:
+                action: none
+              size: 40px
+              styles:
+                icon:
+                  - color: null
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+        - square: true
+          columns: 5
+          type: grid
+          cards:
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              tap_action:
+                action: none
+              entity: script.lg_tv_on_off
+              aspect_ratio: 1/1
+              hold_action:
+                action: none
+              size: 40px
+              styles:
+                icon:
+                  - color: null
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+            - show_name: false
+              show_icon: true
+              type: custom:button-card
+              tap_action:
+                action: toggle
+              entity: script.mediacenter_hoger_2
+              size: 80px
+              aspect_ratio: 1/1
+              styles:
+                icon:
+                  - color: white
+                card:
+                  - background-color: transparent
+            - show_name: false
+              show_icon: true
+              type: custom:button-card
+              tap_action:
+                action: toggle
+              entity: script.mediacenter_ner
+              size: 50px
+              aspect_ratio: 1/1
+              styles:
+                icon:
+                  - color: white
+                card:
+                  - background-color: transparent
+            - show_name: false
+              show_icon: true
+              type: custom:button-card
+              tap_action:
+                action: toggle
+              entity: script.mediacenter_hoger
+              size: 80px
+              aspect_ratio: 1/1
+              styles:
+                icon:
+                  - color: white
+                card:
+                  - background-color: transparent
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              tap_action:
+                action: none
+              entity: script.lg_tv_on_off
+              aspect_ratio: 1/1
+              hold_action:
+                action: none
+              size: 40px
+              styles:
+                icon:
+                  - color: null
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+        - square: true
+          columns: 5
+          type: grid
+          cards:
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              tap_action:
+                action: none
+              entity: script.lg_tv_on_off
+              aspect_ratio: 1/1
+              hold_action:
+                action: none
+              size: 40px
+              styles:
+                icon:
+                  - color: null
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              tap_action:
+                action: none
+              entity: script.lg_tv_on_off
+              aspect_ratio: 1/1
+              hold_action:
+                action: none
+              size: 40px
+              styles:
+                icon:
+                  - color: null
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+            - show_name: false
+              show_icon: true
+              type: custom:button-card
+              tap_action:
+                action: toggle
+              entity: script.mediacenter_ner_2
+              size: 80px
+              aspect_ratio: 1/1
+              styles:
+                icon:
+                  - color: white
+                card:
+                  - background-color: transparent
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              tap_action:
+                action: none
+              entity: script.lg_tv_on_off
+              aspect_ratio: 1/1
+              hold_action:
+                action: none
+              size: 40px
+              styles:
+                icon:
+                  - color: null
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              tap_action:
+                action: none
+              entity: script.lg_tv_on_off
+              aspect_ratio: 1/1
+              hold_action:
+                action: none
+              size: 40px
+              styles:
+                icon:
+                  - color: null
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+        - square: false
+          columns: 7
+          type: grid
+          cards:
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              aspect_ratio: 2/1
+              tap_action:
+                action: none
+              entity: light.alla_lampor_2
+              hold_action:
+                action: none
+              styles:
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+        - type: horizontal-stack
+          cards:
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              tap_action:
+                action: none
+              hold_action:
+                action: none
+              entity: script.byt_kalla_tv
+              size: 25px
+              styles:
+                icon:
+                  - color: null
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+            - show_name: false
+              show_icon: true
+              type: custom:button-card
+              tap_action:
+                action: toggle
+              entity: script.byt_kalla_till_tv
+              size: 25px
+              styles:
+                icon:
+                  - color: white
+                card:
+                  - background-color: transparent
+            - type: custom:button-card
+              entity: script.mediacenter_return
+              show_state: false
+              show_icon: true
+              show_name: false
+              size: 25px
+              tap_action:
+                action: toggle
+              hold_action:
+                action: none
+              styles:
+                icon:
+                  - color: white
+                card:
+                  - background-color: transparent
+            - type: custom:button-card
+              entity: script.mediacenter_home_2
+              show_state: false
+              show_icon: true
+              show_name: false
+              size: 25px
+              tap_action:
+                action: toggle
+              hold_action:
+                action: none
+              styles:
+                icon:
+                  - color: white
+                card:
+                  - background-color: transparent
+            - type: custom:button-card
+              entity: script.mediacenter_mute
+              show_state: false
+              show_icon: true
+              show_name: false
+              size: 25px
+              tap_action:
+                action: toggle
+              hold_action:
+                action: none
+              styles:
+                icon:
+                  - color: white
+                card:
+                  - background-color: transparent
+            - show_name: false
+              show_icon: true
+              type: custom:button-card
+              tap_action:
+                action: toggle
+              entity: script.spellage
+              size: 25px
+              styles:
+                icon:
+                  - color: white
+                card:
+                  - background-color: transparent
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              tap_action:
+                action: none
+              hold_action:
+                action: none
+              entity: script.byt_kalla_tv
+              size: 25px
+              styles:
+                icon:
+                  - color: null
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+        - square: false
+          columns: 7
+          type: grid
+          cards:
+            - show_name: false
+              show_icon: false
+              type: custom:button-card
+              aspect_ratio: 2/1
+              tap_action:
+                action: none
+              entity: light.alla_lampor_2
+              hold_action:
+                action: none
+              styles:
+                icon:
+                  - color: null
+                card:
+                  - background-color: transparent
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+        - type: entities
+          style: |
+            ha-card {
+              background: none;
+              box-shadow: none;
+              --secondary-text-color: var(--primary-text-color);
+            }
+          entities:
+            - entity: media_player.onkyo_receiver
+              style:
+                hui-generic-entity-row:
+                  $: |
+                    .info {
+                      display: none;
+                    }
+                    state-badge {
+                      display: none;
+                    }
+                  .: |
+                    ha-icon-button {
+                      display: none;
+                    }
+                    ha-slider {
+                      max-width: unset !important;
+                    }
+                    .flex .state {
+                      display: none;
+                    }
+                    .flex ha-slider {
+                     --paper-slider-active-color: white;
+                     --paper-slider-knob-color: white;
+                     --paper-slider-container-color: white;
+                     }
+        - show_name: false
+          show_icon: false
+          type: custom:button-card
+          aspect_ratio: 100/1
+          tap_action:
+            action: none
+          entity: light.alla_lampor_2
+          hold_action:
+            action: none
+          styles:
+            icon:
+              - color: null
+            card:
+              - background-color: transparent
+          style: |
+            ha-card {
+              box-shadow: none;
+            }
+        - square: true
+          columns: 3
+          type: grid
+          cards:
+            - type: vertical-stack
+              cards:
+                - type: custom:button-card
+                  tap_action:
+                    action: toggle
+                  entity: script.byt_kalla_till_cmore
+                  entity_picture: /local/Logotyper/Cmore.png
+                  show_icon: false
+                  show_entity_picture: true
+                  show_name: false
+                  size: 60%
+                  styles:
+                    card:
+                      - margin-left: 10px
+                      - margin-bottom: 10px
+                      - height: 40px
+                      - width: 100px
+                      - border-radious: 100%
+                      - background-color: transparent
+                - type: custom:button-card
+                  tap_action:
+                    action: toggle
+                  entity: script.byt_kalla_till_svt
+                  entity_picture: /local/Logotyper/SVT.png
+                  show_icon: false
+                  show_entity_picture: true
+                  show_name: false
+                  size: 40%
+                  styles:
+                    card:
+                      - margin-left: 10px
+                      - margin-bottom: 10px
+                      - height: 40px
+                      - width: 100px
+                      - border-radious: 100%
+                      - background-color: transparent
+                - type: custom:button-card
+                  tap_action:
+                    action: toggle
+                  entity: script.byt_kalla_till_hbomax
+                  entity_picture: /local/Logotyper/HBO%20MAx.png
+                  show_icon: false
+                  show_entity_picture: true
+                  show_name: false
+                  size: 60%
+                  styles:
+                    card:
+                      - margin-left: 10px
+                      - margin-bottom: 10px
+                      - height: 40px
+                      - width: 100px
+                      - border-radious: 100%
+                      - background-color: transparent
+            - type: vertical-stack
+              cards:
+                - type: custom:button-card
+                  tap_action:
+                    action: toggle
+                  entity: script.byt_kalla_till_youtube
+                  entity_picture: /local/Logotyper/YouTube.png
+                  show_icon: false
+                  show_entity_picture: true
+                  show_name: false
+                  size: 60%
+                  styles:
+                    card:
+                      - margin-left: 10px
+                      - margin-bottom: 10px
+                      - height: 40px
+                      - width: 100px
+                      - border-radious: 100%
+                      - background-color: transparent
+                - type: custom:button-card
+                  tap_action:
+                    action: toggle
+                  entity: script.byt_kalla_till_plex
+                  entity_picture: /local/Logotyper/Plex.png
+                  show_icon: false
+                  show_entity_picture: true
+                  show_name: false
+                  size: 50%
+                  styles:
+                    card:
+                      - margin-left: 10px
+                      - margin-bottom: 10px
+                      - height: 40px
+                      - width: 100px
+                      - border-radious: 100%
+                      - background-color: transparent
+                - type: custom:button-card
+                  tap_action:
+                    action: toggle
+                  entity: script.byt_kalla_till_netflix
+                  entity_picture: /local/Logotyper/Netflix.png
+                  show_icon: false
+                  show_entity_picture: true
+                  show_name: false
+                  size: 60%
+                  styles:
+                    card:
+                      - margin-left: 10px
+                      - margin-bottom: 10px
+                      - height: 40px
+                      - width: 100px
+                      - border-radious: 100%
+                      - background-color: transparent
+            - type: vertical-stack
+              cards:
+                - type: custom:button-card
+                  tap_action:
+                    action: toggle
+                  entity: script.byt_kalla_till_spotify_och_starta_musik
+                  entity_picture: /local/Logotyper/Spotify.png
+                  show_icon: false
+                  show_entity_picture: true
+                  show_name: false
+                  size: 60%
+                  styles:
+                    card:
+                      - margin-left: 10px
+                      - margin-bottom: 10px
+                      - height: 40px
+                      - width: 100px
+                      - border-radious: 100%
+                      - background-color: transparent
+                - type: custom:button-card
+                  tap_action:
+                    action: toggle
+                  entity: script.byt_kalla_till_viaplay
+                  entity_picture: /local/Logotyper/Viaplay.png
+                  show_icon: false
+                  show_entity_picture: true
+                  show_name: false
+                  size: 60%
+                  styles:
+                    card:
+                      - margin-left: 10px
+                      - margin-bottom: 10px
+                      - height: 40px
+                      - width: 100px
+                      - border-radious: 100%
+                      - background-color: transparent
+                - type: custom:button-card
+                  tap_action:
+                    action: toggle
+                  entity: script.byt_kalla_till_disneyplus
+                  entity_picture: /local/Logotyper/Disney.png
+                  show_icon: false
+                  show_entity_picture: true
+                  show_name: false
+                  size: 70%
+                  styles:
+                    card:
+                      - margin-left: 10px
+                      - margin-bottom: 10px
+                      - height: 40px
+                      - width: 100px
+                      - border-radious: 100%
+                      - background-color: transparent
+        - type: vertical-stack
+          cards:
+            - type: custom:button-card
+              tap_action:
+                action: none
+              hold_action:
+                action: none
+              entity: media_player.apple_tv
+              show_icon: false
+              show_entity_picture: false
+              show_name: false
+              show_state: true
+              size: 100%
+              styles:
+                card:
+                  - padding-bottom: 0px
+                  - padding-top: 0px
+                  - margin-top: 15px
+                  - padding-left: 40px
+                  - height: 20px
+                  - width: auto
+                  - justify-self: left
+                  - font-weight: 600
+                  - font-size: 16px
+                  - background-color: transparent
+                state:
+                  - color: white
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+            - type: conditional
+              conditions:
+                - entity: sensor.apple_tv_app_name
+                  state_not: unknown
+              card:
+                type: custom:button-card
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                entity: sensor.apple_tv_app_name
+                show_icon: false
+                show_entity_picture: false
+                show_name: false
+                show_state: true
+                size: 100%
+                styles:
+                  card:
+                    - padding-bottom: 0px
+                    - padding-top: 0px
+                    - margin-left: 40px
+                    - height: 20px
+                    - width: auto
+                    - background-color: transparent
+                  state:
+                    - justify-self: left
+                    - font-weight: 500
+                    - font-size: 14px
+                    - color: white
+                style: |
+                  ha-card {
+                    box-shadow: none;
+                   }
+            - type: conditional
+              conditions:
+                - entity: sensor.apple_tv_media_title
+                  state_not: unknown
+              card:
+                type: custom:button-card
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                entity: sensor.apple_tv_media_title
+                show_icon: false
+                show_entity_picture: false
+                show_name: false
+                show_state: true
+                size: 100%
+                styles:
+                  card:
+                    - padding-bottom: 0px
+                    - padding-top: 0px
+                    - padding-left: 40px
+                    - height: 20px
+                    - width: auto
+                    - background-color: transparent
+                  state:
+                    - justify-self: left
+                    - font-weight: 500
+                    - font-size: 14px
+                    - max-width: 40ch
+                    - color: white
+                style: |
+                  ha-card {
+                    box-shadow: none;
+                  }
+        - show_name: false
+          show_icon: false
+          type: custom:button-card
+          aspect_ratio: 30/1
+          tap_action:
+            action: none
+          entity: light.alla_lampor_2
+          hold_action:
+            action: none
+          styles:
+            icon:
+              - color: null
+            card:
+              - background-color: transparent
+          style: |
+            ha-card {
+              box-shadow: none;
+            }
+        - show_name: false
+          show_icon: false
+          type: custom:button-card
+          aspect_ratio: 100/1
+          tap_action:
+            action: none
+          entity: light.alla_lampor_2
+          hold_action:
+            action: none
+          styles:
+            icon:
+              - color: null
+            card:
+              - background-color: transparent
+          style: |
+            ha-card {
+              box-shadow: none;
+            }
+  card_mod:
+    style: |
+      ha-card {
+        background: rgb(34, 34, 34);
+        box-shadow: none;
+      }
+style: |
+  --popup-background-color: rgb(34, 34, 34);
