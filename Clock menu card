@@ -211,14 +211,16 @@ cards:
                     - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
                   icon:
                     - color: rgb(255, 202, 55, 1)
-                    - animation:
-                        - gelatine 2s linear
+                    - animation: bounce 1s linear
             extra_styles: |
-              @keyframes gelatine {
-                from, to { transform: scale(1.0); }
-                25% { transform: scale(0.9, 1.1); }
-                50% { transform: scale(1.2, 0.9); }
-                75% { transform: scale(0.95, 1.05); }
+              @keyframes bounce {
+                  50% { transform:translateY(0%); }
+                  60% { transform:translateY(-15%); }
+                  70% { transform:translateY(0%); }
+                  85% { transform:translateY(-7%); }
+                  87% { transform:translateY(0%); }
+                  89% { transform:translateY(-3%); }
+                  100% { transform:translateY(0); }
               }
           - type: custom:button-card
             entity: input_text.mobilmeny_sebbe
@@ -249,11 +251,16 @@ cards:
                     - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
                   icon:
                     - color: rgb(65, 106, 154, 1)
-                    - animation: grow 2s ease
+                    - animation: bounce 1s linear
             extra_styles: |
-              @keyframes grow {
-                from { transform: scale(0); }
-                to { transform: scale(1); }
+              @keyframes bounce {
+                  50% { transform:translateY(0%); }
+                  60% { transform:translateY(-15%); }
+                  70% { transform:translateY(0%); }
+                  85% { transform:translateY(-7%); }
+                  87% { transform:translateY(0%); }
+                  89% { transform:translateY(-3%); }
+                  100% { transform:translateY(0); }
               }
           - type: custom:button-card
             entity: input_text.mobilmeny_sebbe
@@ -284,14 +291,16 @@ cards:
                     - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
                   icon:
                     - color: rgb(187, 29, 29, 1)
-                    - animation: tilt-shaking 0.2s linear 5
+                    - animation: bounce 1s linear
             extra_styles: |
-              @keyframes tilt-shaking {
-                0% { transform: rotate(0deg); }
-                25% { transform: rotate(15deg); }
-                50% { transform: rotate(0eg); }
-                75% { transform: rotate(-15deg); }
-                100% { transform: rotate(0deg); }
+              @keyframes bounce {
+                  50% { transform:translateY(0%); }
+                  60% { transform:translateY(-15%); }
+                  70% { transform:translateY(0%); }
+                  85% { transform:translateY(-7%); }
+                  87% { transform:translateY(0%); }
+                  89% { transform:translateY(-3%); }
+                  100% { transform:translateY(0); }
               }
           - type: custom:button-card
             entity: input_text.mobilmeny_sebbe
@@ -322,19 +331,16 @@ cards:
                     - box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.35)
                   icon:
                     - color: rgb(255, 176, 102, 1)
-                    - animation: bounce-in-right 1.5s ease
+                    - animation: bounce 1s linear
             extra_styles: |
-              @keyframes bounce-in-right {
-                0% {
-                  opacity: 0;
-                  transform: translateY(500px);
-                }
-                60% {
-                  opacity: 1;
-                  transform: translateY(-15px);
-                }
-                80% { transform: translateY(10px); }
-                100% { transform: translateY(0); }
+              @keyframes bounce {
+                  50% { transform:translateY(0%); }
+                  60% { transform:translateY(-15%); }
+                  70% { transform:translateY(0%); }
+                  85% { transform:translateY(-7%); }
+                  87% { transform:translateY(0%); }
+                  89% { transform:translateY(-3%); }
+                  100% { transform:translateY(0); }
               }
           - type: custom:button-card
             entity: input_text.mobilmeny_sebbe
