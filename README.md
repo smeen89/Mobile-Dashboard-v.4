@@ -1,6 +1,6 @@
 # Home assistant mobile dashboard v.4 (work in progress)
 
-This is the yaml code of a work in progress dashboard for those interested in grabbing some yaml code for their own use. 
+This is the yaml code of a work in progress dashboard for those interested in grabbing some code for their own use. 
 
 ![1](https://user-images.githubusercontent.com/106514124/234237391-c87cc3cc-a398-47d6-846e-452d3e3f7d77.png)
 ![3](https://user-images.githubusercontent.com/106514124/234237396-a8c65b6c-2c33-4f7d-8947-3cb9a2da9f98.png)
