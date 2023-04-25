@@ -2,9 +2,9 @@
 
 This is the yaml code of a work in progress dashboard for those interested in grabbing some yaml code for their own use. 
 
-![1](https://user-images.githubusercontent.com/106514124/234235355-ceb70200-3a5d-45b0-8d15-b06490a9bdf5.png)
-![3](https://user-images.githubusercontent.com/106514124/234235360-84843bdc-7535-4409-bf37-ff96ce7d5b2a.png)
-![2](https://user-images.githubusercontent.com/106514124/234235362-8c226e87-04bf-463c-876c-5b2be0af87a2.png)
+![1](https://user-images.githubusercontent.com/106514124/234237391-c87cc3cc-a398-47d6-846e-452d3e3f7d77.png)
+![3](https://user-images.githubusercontent.com/106514124/234237396-a8c65b6c-2c33-4f7d-8947-3cb9a2da9f98.png)
+![2](https://user-images.githubusercontent.com/106514124/234237398-ae58828c-e163-401f-a15d-2b7b963a5d74.png)
 
 First posted a video of the dashboard on [Reddit](https://www.reddit.com/r/homeassistant/comments/12twkxs/just_another_mobile_dashboard/?utm_source=share&utm_medium=web2x&context=3)
 
