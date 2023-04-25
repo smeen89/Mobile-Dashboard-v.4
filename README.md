@@ -2,6 +2,8 @@
 
 This is the yaml code of a work in progress dashboard for those interested in grabbing some yaml code for their own use. 
 
+![IMG_20230425_105148](https://user-images.githubusercontent.com/106514124/234233509-9061ef37-6d55-48d4-98ef-f636ee006ccf.jpg)
+
 First posted a video of the dashboard on [Reddit](https://www.reddit.com/r/homeassistant/comments/12twkxs/just_another_mobile_dashboard/?utm_source=share&utm_medium=web2x&context=3)
 
 
